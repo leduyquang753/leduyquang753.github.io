@@ -1,0 +1,24 @@
+﻿<html>
+<head>
+<title>Download HUDToggler</title>
+<style>
+body { font-family: Segoe UI, Arial, sans-serif }
+h1 { font-family: Segoe UI Light, Arial, sans-serif }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
+<noscript>
+<p>JavaScript cannot be run, so HUDToggler cannot be downloaded automatically.</p>
+<p>However, you can still manually do it by <a href="https://github.com/leduyquang753/hudtoggler/releases/latest">clicking here</a>.</p>
+<p>Thank you for choosing my mod.</p>
+</noscript>
+<div id="success_message"></div>
+<script>
+$.getJSON("https://api.github.com/repos/leduyquang753/hudtoggler/releases/latest").done(function(release) {
+	window.location.href = release.assets[0].browser_download_url;
+  });
+document.getElementById("success_message").innerHTML = "<h1>Your download is starting</h1><p>Thank you for choosing the HUD Toggler mod.</p>";
+</script>
+</body>
+</html>
