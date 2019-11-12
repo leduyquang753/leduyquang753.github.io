@@ -1,0 +1,2556 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 15">
+<meta name=Originator content="Microsoft Word 15">
+<link rel=File-List href="CalcItPascal_files/filelist.xml">
+<link rel=Edit-Time-Data href="CalcItPascal_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Lê Duy Quang</o:Author>
+  <o:LastAuthor>Lê Duy Quang</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>255</o:TotalTime>
+  <o:Created>2019-11-12T06:19:00Z</o:Created>
+  <o:LastSaved>2019-11-12T06:19:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>2097</o:Words>
+  <o:Characters>11953</o:Characters>
+  <o:Company>LEDUQU</o:Company>
+  <o:Lines>99</o:Lines>
+  <o:Paragraphs>28</o:Paragraphs>
+  <o:CharactersWithSpaces>14022</o:CharactersWithSpaces>
+  <o:Version>16.00</o:Version>
+ </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+<link rel=themeData href="CalcItPascal_files/themedata.thmx">
+<link rel=colorSchemeMapping href="CalcItPascal_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:DisplayBackgroundShape/>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:PunctuationKerning/>
+  <w:DrawingGridHorizontalSpacing>5,5 pt</w:DrawingGridHorizontalSpacing>
+  <w:DisplayHorizontalDrawingGridEvery>2</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>2</w:DisplayVerticalDrawingGridEvery>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>VI</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:EnableOpenTypeKerning/>
+   <w:DontFlipMirrorIndents/>
+   <w:OverrideTableStyleHps/>
+  </w:Compatibility>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="376">
+  <w:LsdException Locked="false" Priority="0" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index 9"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" Name="toc 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="header"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footer"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="index heading"/>
+  <w:LsdException Locked="false" Priority="35" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of figures"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="envelope return"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="footnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="line number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="page number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote reference"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="endnote text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="table of authorities"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="macro"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="toa heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Bullet 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Number 5"/>
+  <w:LsdException Locked="false" Priority="10" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Closing"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Signature"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="List Continue 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Message Header"/>
+  <w:LsdException Locked="false" Priority="11" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Salutation"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Date"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text First Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Note Heading"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Body Text Indent 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Block Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="FollowedHyperlink"/>
+  <w:LsdException Locked="false" Priority="22" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Document Map"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Plain Text"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="E-mail Signature"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Top of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Bottom of Form"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal (Web)"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Acronym"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Address"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Cite"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Code"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Definition"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Keyboard"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Preformatted"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Sample"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Typewriter"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="HTML Variable"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Normal Table"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="annotation subject"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="No List"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Outline List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Simple 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Classic 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Colorful 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Columns 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Grid 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table List 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table 3D effects 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Contemporary"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Elegant"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Professional"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Subtle 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 2"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Web 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Balloon Text"/>
+  <w:LsdException Locked="false" Priority="39" Name="Table Grid"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Table Theme"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+  <w:LsdException Locked="false" Priority="41" Name="Plain Table 1"/>
+  <w:LsdException Locked="false" Priority="42" Name="Plain Table 2"/>
+  <w:LsdException Locked="false" Priority="43" Name="Plain Table 3"/>
+  <w:LsdException Locked="false" Priority="44" Name="Plain Table 4"/>
+  <w:LsdException Locked="false" Priority="45" Name="Plain Table 5"/>
+  <w:LsdException Locked="false" Priority="40" Name="Grid Table Light"/>
+  <w:LsdException Locked="false" Priority="46" Name="Grid Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="Grid Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="Grid Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="Grid Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="Grid Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="Grid Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="Grid Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="Grid Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="Grid Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="Grid Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="46" Name="List Table 1 Light"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark"/>
+  <w:LsdException Locked="false" Priority="51" Name="List Table 6 Colorful"/>
+  <w:LsdException Locked="false" Priority="52" Name="List Table 7 Colorful"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 1"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 1"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 1"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 1"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 2"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 2"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 2"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 2"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 3"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 3"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 3"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 3"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 4"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 4"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 4"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 4"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 5"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 5"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 5"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 5"/>
+  <w:LsdException Locked="false" Priority="46"
+   Name="List Table 1 Light Accent 6"/>
+  <w:LsdException Locked="false" Priority="47" Name="List Table 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="48" Name="List Table 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="49" Name="List Table 4 Accent 6"/>
+  <w:LsdException Locked="false" Priority="50" Name="List Table 5 Dark Accent 6"/>
+  <w:LsdException Locked="false" Priority="51"
+   Name="List Table 6 Colorful Accent 6"/>
+  <w:LsdException Locked="false" Priority="52"
+   Name="List Table 7 Colorful Accent 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Hyperlink"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Hashtag"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Unresolved Mention"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   Name="Smart Link"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-469750017 -1073732485 9 0 511 0;}
+@font-face
+	{font-family:"Segoe UI";
+	panose-1:2 11 5 2 4 2 4 2 2 3;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-469750017 -1073683329 9 0 511 0;}
+@font-face
+	{font-family:"Segoe UI Light";
+	panose-1:2 11 5 2 4 2 4 2 2 3;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-469750017 -1073683329 9 0 511 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:3.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Segoe UI",sans-serif;
+	mso-ascii-font-family:"Segoe UI";
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"Segoe UI";
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:"Segoe UI";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-fareast-language:EN-US;}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2F5496;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	mso-font-kerning:0pt;
+	mso-fareast-language:EN-US;
+	font-weight:normal;}
+h2
+	{mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-style-next:Normal;
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:4.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:13.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2F5496;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	mso-fareast-language:EN-US;
+	font-weight:normal;}
+h3
+	{mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-style-next:Normal;
+	margin-top:2.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:12.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#1F3763;
+	mso-themecolor:accent1;
+	mso-themeshade:127;
+	mso-fareast-language:EN-US;
+	font-weight:normal;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;
+	mso-fareast-language:EN-US;}
+p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;
+	mso-fareast-language:EN-US;}
+p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;
+	mso-fareast-language:EN-US;}
+p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
+	mso-style-next:Normal;
+	mso-style-type:export-only;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:28.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;
+	mso-fareast-language:EN-US;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:#0563C1;
+	mso-themecolor:hyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:#954F72;
+	mso-themecolor:followedhyperlink;
+	text-decoration:underline;
+	text-underline:single;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:16.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2F5496;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#2F5496;
+	mso-themecolor:accent1;
+	mso-themeshade:191;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Title;
+	mso-ansi-font-size:28.0pt;
+	mso-bidi-font-size:28.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	letter-spacing:-.5pt;
+	mso-font-kerning:14.0pt;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Segoe UI Light",sans-serif;
+	mso-ascii-font-family:"Segoe UI Light";
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:"Segoe UI Light";
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#1F3763;
+	mso-themecolor:accent1;
+	mso-themeshade:127;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-family:"Segoe UI",sans-serif;
+	mso-ascii-font-family:"Segoe UI";
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:"Segoe UI";
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:"Segoe UI";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-fareast-language:EN-US;}
+.MsoPapDefault
+	{mso-style-type:export-only;
+	margin-bottom:8.0pt;
+	line-height:107%;}
+@page WordSection1
+	{size:595.3pt 841.9pt;
+	margin:1.0cm 1.0cm 1.0cm 1.0cm;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:35.45pt;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:27293605;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1842892484 69861377 69861379 69861381 69861377 69861379 69861381 69861377 69861379 69861381;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l0:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l0:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l0:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l0:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l1
+	{mso-list-id:227883315;
+	mso-list-type:hybrid;
+	mso-list-template-ids:759736658 69861377 69861379 69861381 69861377 69861379 69861381 69861377 69861379 69861381;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l1:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l1:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l1:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l2
+	{mso-list-id:339552369;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1890465574 69861377 69861379 69861381 69861377 69861379 69861381 69861377 69861379 69861381;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l2:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l2:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l2:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l3
+	{mso-list-id:386491502;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1591121074 69861377 69861379 69861381 69861377 69861379 69861381 69861377 69861379 69861381;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l3:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l3:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l3:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l3:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l3:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l4
+	{mso-list-id:1254513161;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1295194504 69861377 69861379 69861381 69861377 69861379 69861381 69861377 69861379 69861381;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l4:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l4:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l4:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l4:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l4:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l5
+	{mso-list-id:1995406035;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1959859396 69861377 69861379 69861381 69861377 69861379 69861381 69861377 69861379 69861381;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l5:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l5:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l5:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l5:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l5:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l5:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l5:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l5:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l6
+	{mso-list-id:2023122685;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1563244798 69861377 69861379 69861381 69861377 69861379 69861381 69861377 69861379 69861381;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l6:level3
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l6:level4
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6:level5
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l6:level6
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+@list l6:level7
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6:level8
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";}
+@list l6:level9
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0A7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Wingdings;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin-top:0cm;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:8.0pt;
+	mso-para-margin-left:0cm;
+	line-height:107%;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Segoe UI",sans-serif;
+	mso-ascii-font-family:"Segoe UI";
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:"Segoe UI";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-fareast-language:EN-US;}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Segoe UI",sans-serif;
+	mso-ascii-font-family:"Segoe UI";
+	mso-ascii-theme-font:minor-latin;
+	mso-hansi-font-family:"Segoe UI";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-fareast-language:EN-US;}
+table.Bngtrngen
+	{mso-style-name:"B\1EA3ng tr\1EAFng \0111en";
+	mso-tstyle-rowband-size:1;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-tstyle-vert-align:middle;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:"Segoe UI",sans-serif;
+	mso-ascii-font-family:"Segoe UI";
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:Calibri;
+	mso-hansi-font-family:"Segoe UI";
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+table.BngtrngenFirstRow
+	{mso-style-name:"B\1EA3ng tr\1EAFng \0111en";
+	mso-table-condition:first-row;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-ansi-font-weight:bold;}
+table.BngtrngenOddRow
+	{mso-style-name:"B\1EA3ng tr\1EAFng \0111en";
+	mso-table-condition:odd-row;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-tstyle-shading:#D9D9D9;
+	mso-tstyle-shading-themecolor:background1;
+	mso-tstyle-shading-themeshade:217;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=VI link="#0563C1" vlink="#954F72" style='tab-interval:36.0pt'>
+
+<div class=WordSection1>
+
+<div style='mso-element:para-border-div;border:none;border-bottom:solid windowtext 1.0pt;
+mso-border-bottom-alt:solid windowtext .75pt;padding:0cm 0cm 1.0pt 0cm'>
+
+<p class=MsoTitle style='border:none;mso-border-bottom-alt:solid windowtext .75pt;
+padding:0cm;mso-padding-alt:0cm 0cm 1.0pt 0cm'><span class=SpellE>CalcIt</span>
+P<span class=SpellE><span lang=EN-US style='mso-ansi-language:EN-US'>ascal</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+</div>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>A
+simple-to-use calculator, written in Pascal.<o:p></o:p></span></i></p>
+
+<h1><span lang=EN-US style='mso-ansi-language:EN-US'>Introduction<o:p></o:p></span></h1>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>“Written
+in Pascal”</span></i><span lang=EN-US style='mso-ansi-language:EN-US'>. Reading
+this, you are probably imagining a rather old, obsolete programming language
+that can only be used in schools and run in a dull, ugly command-line console
+like back in the 90s. If that is really what is in your mind right now, then
+you will have to think again. Thanks to the </span><a
+href="https://d.docs.live.net/5463a6e070d02b39/Documents/freepascal.org"><span
+lang=EN-US style='mso-ansi-language:EN-US'>Free Pascal Compiler</span></a><span
+lang=EN-US style='mso-ansi-language:EN-US'> and </span><a
+href="https://d.docs.live.net/5463a6e070d02b39/Documents/lazarus-ide.org"><span
+lang=EN-US style='mso-ansi-language:EN-US'>Lazarus</span></a><span lang=EN-US
+style='mso-ansi-language:EN-US'>, this is a GUI application, with windows:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='mso-ansi-language:EN-US;mso-no-proof:yes'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1026" type="#_x0000_t75"
+ style='width:432.75pt;height:305.25pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="CalcItPascal_files/image001.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=577 height=407
+src="CalcItPascal_files/image001.png" v:shapes="Picture_x0020_1"><![endif]></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>This
+program takes any simple to medium level mathematical expressions and evaluate
+them. You can use the program to calculate stuff in your daily life, at school,
+or anywhere else you like.<o:p></o:p></span></p>
+
+<h2><span lang=EN-US style='mso-ansi-language:EN-US'>Features<o:p></o:p></span></h2>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Simple GUI.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Evaluates expressions with respect to
+     mathematical precedence.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Many mathematical functions available.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo1'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Variables system with arbitrary variable
+     names.<o:p></o:p></span></li>
+</ul>
+
+<h1><span lang=EN-US style='mso-ansi-language:EN-US'>Usage<o:p></o:p></span></h1>
+
+<h2><span lang=EN-US style='mso-ansi-language:EN-US'>General<o:p></o:p></span></h2>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>The
+program’s main window is where you enter your mathematical expressions into the
+<i>Input</i> box to be evaluated, either by clicking the <i>Calculate</i>
+button or hitting Enter. The program will (try to) evaluate and output its response
+to the <i>Console</i>. The <i>Console</i> retains all calculations performed
+during a session of the program.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Any spaces
+in the expression will be ignored and everything is case-insensitive.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Clicking
+the <i>Variables</i> button will bring up a window to watch variables:<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US
+style='mso-ansi-language:EN-US;mso-no-proof:yes'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_2" o:spid="_x0000_i1025" type="#_x0000_t75" style='width:437.25pt;
+ height:312.75pt;visibility:visible;mso-wrap-style:square'>
+ <v:imagedata src="CalcItPascal_files/image002.png" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=583 height=417
+src="CalcItPascal_files/image002.png" v:shapes="Picture_x0020_2"><![endif]></span><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>It displays
+the value of A to Z, <span class=SpellE>PreAns</span>, Ans and a custom one of
+your choice. Clicking a variable name button will insert the name into <i>Input</i>.<o:p></o:p></span></p>
+
+<h2><span lang=EN-US style='mso-ansi-language:EN-US'>Calculator behavior and
+syntax<o:p></o:p></span></h2>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>Basics<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>An expression
+has two parts: variable assignment (optional) and the main expression to be
+evaluated.<o:p></o:p></span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Variable assignment comprises of a
+     variable name followed by an equal sign (=). Multiple variable assignments
+     can be chained in the same expression.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>The main expression can contain numbers,
+     variables, operators and functions.<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Examples:<o:p></o:p></span></i></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-US
+style='mso-ansi-language:EN-US'>“16,3+27,5.3-3^2<span class=GramE>sin(</span>45)”
+will evaluate to 90,7928932188.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><span lang=EN-US
+style='mso-ansi-language:EN-US'>“tables=racks=50:5” will evaluate to 10 and
+assign it to variables named “tables” and “racks”.<o:p></o:p></span></p>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>Numbers<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>A number <span
+class=GramE>entered into</span> the program must follow these requirements:<o:p></o:p></span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Uses a comma to separate the integral and
+     fractional part, cannot have more than one comma.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Can have negative (-) or positive (+)
+     signs at the beginning. <b>Note:</b> The precedence of the negative and
+     positive signs depends on the expression, see <i>Calculation order</i>.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Can use a percent sign (%) at the end to
+     divide the number by 100, cannot have more than one percent sign.<o:p></o:p></span></li>
+</ul>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>Variables<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>A <span
+class=GramE>variable stores</span> a number which can be used inside an
+expression. Each variable is identified by a name that must follow these
+requirements:<o:p></o:p></span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo3'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Can only contain <span class=SpellE>a÷z</span>,
+     0÷9 and underscore (_) characters.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo3'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Cannot start with a digit.<o:p></o:p></span></li>
+</ul>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>Operands<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>An operand
+is placed between two numbers/variables to perform a mathematical operation on
+the numbers.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>The program
+currently supports these operands:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:14.2pt;tab-stops:1.0cm'><span lang=EN-US
+style='mso-ansi-language:EN-US'>+<span style='mso-tab-count:1'>  </span>Addition<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:14.2pt;tab-stops:1.0cm'><span lang=EN-US
+style='mso-ansi-language:EN-US'>-<span style='mso-tab-count:1'>   </span>Subtraction<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:14.2pt;tab-stops:1.0cm'><span lang=EN-US
+style='mso-ansi-language:EN-US'>. *<span style='mso-tab-count:1'>  </span>Multiplication<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:14.2pt;tab-stops:1.0cm'><span lang=EN-US
+style='mso-ansi-language:EN-US'>: /<span style='mso-tab-count:1'>  </span>Division<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:14.2pt;tab-stops:1.0cm'><span lang=EN-US
+style='mso-ansi-language:EN-US'>^<span style='mso-tab-count:1'>  </span>Exponentiation<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:14.2pt;tab-stops:1.0cm'><span lang=EN-US
+style='mso-ansi-language:EN-US'>#<span style='mso-tab-count:1'>   </span>Root<o:p></o:p></span></p>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>Braces and functions<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>A section
+of the expression can be grouped by surrounding with one of these character
+pairs: () [] {} &lt;&gt;, in which case the grouped expression is called a <i>bracelet</i>.
+The expression inside will be calculated first before its result is used for evaluation
+of the greater expression part. If an identifier (<span class=GramE>similar to</span>
+a variable name) is placed right before the opening brace, the bracelet will
+become a function. A function will take the expression inside the bracelet as
+their arguments and evaluate to a number. A function can have multiple
+arguments, in which case the arguments are separated by semicolons (;).<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Negative
+and positive signs can also be placed before a bracelet.<o:p></o:p></span></p>
+
+<p class=MsoNormal><b><span lang=EN-US style='mso-ansi-language:EN-US'>Notes:</span></b><span
+lang=EN-US style='mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l6 level1 lfo5'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>If there are more than one parameter
+     inside a bracelet that is not a function, the bracelet will evaluate to
+     the sum of the parameters.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l6 level1 lfo5'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>If a bracelet is empty, it will evaluate
+     to 0. Similarly, if a parameter is empty, it will be treated as 0. The
+     consequence is a function can never have 0 parameters.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l6 level1 lfo5'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>The precedence of the negative and
+     positive signs depends on the expression, see <i>Calculation order</i>.<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>For a list
+of functions and how they should be used, refer to the <i>List of functions</i>.<o:p></o:p></span></p>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>Multiplication without
+sign<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>In some
+places, the multiplication sign can be omitted in the expression, in which case
+the multiplication’s precedence will be raised higher than normal
+multiplication and division (see <i>Calculation order</i>). The places where
+the multiplication sign can be omitted are:<o:p></o:p></span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo6'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Between a number before and a variable
+     after, example: “13pi”.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo6'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Between a number before and a bracelet
+     after, example: “13(3+5)”.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo6'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Between a bracelet before and a
+     number/variable after, examples: “(3+5)13”; “(2,5+16,<span class=GramE>8)pi</span>”.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo6'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Between two bracelets, example: “(2+<span
+     class=GramE>3)(</span>4+5)”.<o:p></o:p></span></li>
+</ul>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>Calculation order<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-bottom:6.0pt'><span lang=EN-US
+style='mso-ansi-language:EN-US'>The program evaluates the expression with
+respect to mathematical precedence, as follows:<o:p></o:p></span></p>
+
+<table class=MsoTableGrid border=1 cellspacing=0 cellpadding=0
+ style='margin-left:36.0pt;border-collapse:collapse;border:none;mso-border-alt:
+ solid windowtext .5pt;mso-yfti-tbllook:1184;mso-padding-alt:0cm 5.4pt 0cm 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=112 style='width:84.1pt;border:solid windowtext 1.0pt;mso-border-alt:
+  solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:3.0pt;text-align:center'><b><span
+  lang=EN-US style='mso-ansi-language:EN-US'>Order<o:p></o:p></span></b></p>
+  </td>
+  <td width=501 style='width:375.65pt;border:solid windowtext 1.0pt;border-left:
+  none;mso-border-left-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=center style='margin-bottom:3.0pt;text-align:center'><b><span
+  lang=EN-US style='mso-ansi-language:EN-US'>Things that are evaluated<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1'>
+  <td width=112 style='width:84.1pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>#1 First<o:p></o:p></span></p>
+  </td>
+  <td width=501 style='width:375.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>Bracelets<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2'>
+  <td width=112 style='width:84.1pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>#2 Second<o:p></o:p></span></p>
+  </td>
+  <td width=501 style='width:375.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>Exponentiation (calculation order:
+  right to left)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3'>
+  <td width=112 style='width:84.1pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>#3 Third<o:p></o:p></span></p>
+  </td>
+  <td width=501 style='width:375.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>Root (calculation <span
+  class=GramE>order:</span> left to right)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4'>
+  <td width=112 style='width:84.1pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>#4 Fourth<o:p></o:p></span></p>
+  </td>
+  <td width=501 style='width:375.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>Multiplication without sign
+  (calculation <span class=GramE>order:</span> left to right)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5'>
+  <td width=112 style='width:84.1pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>#5 Fifth<o:p></o:p></span></p>
+  </td>
+  <td width=501 style='width:375.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>Multiplication with sign, division
+  (calculation <span class=GramE>order:</span> left to right)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;mso-yfti-lastrow:yes'>
+  <td width=112 style='width:84.1pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-top-alt:solid windowtext .5pt;mso-border-alt:solid windowtext .5pt;
+  padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>#6 Sixth<o:p></o:p></span></p>
+  </td>
+  <td width=501 style='width:375.65pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;mso-border-left-alt:solid windowtext .5pt;
+  mso-border-alt:solid windowtext .5pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal align=left style='margin-bottom:3.0pt;text-align:left'><span
+  lang=EN-US style='mso-ansi-language:EN-US'>Addition, subtraction (calculation
+  <span class=GramE>order:</span> left to right)<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span lang=EN-US style='color:white;mso-color-alt:windowtext;
+mso-ansi-language:EN-US'>The negative/positive signs’ precedence is a bit
+special: it’s higher than </span><span lang=EN-US style='mso-ansi-language:
+EN-US'>operators before and lower than operators with higher precedence than
+multiplication, for example “2^-2” will calculate “-2” first before performing
+the exponentiation, while “-2^2” will perform 2^2 = 4 before <span
+style='mso-spacerun:yes'> </span>the result gets negated.<o:p></o:p></span></p>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>Output<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If the expression
+is valid, after evaluating the full expression, the program will print to the
+console an equal sign (=) followed by the evaluated number, clearing the <i>Input</i>
+box. Otherwise, it will print “ERROR:” and explain what was wrong with the
+expression, the expression will be retained in the box. In some cases, the <i>Input</i>
+box’s caret will move to the erroneous place in the expression.<o:p></o:p></span></p>
+
+<h1><span lang=EN-US style='mso-ansi-language:EN-US'>List of functions<o:p></o:p></span></h1>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>sum(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the total of the arguments, as if the arguments are surrounded by bracelets and
+addition signs are placed between.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> total<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>floor(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the integral part of the total of the arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>flr</span><o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>round(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the rounded total of the arguments. If the total’s absolute value’s fractional
+part is at least 0,5, it will be rounded to the nearest to 0 number which is
+farther to 0 than the total: 3,6 -&gt; 4; -1,5 -&gt; -2, otherwise it will be
+floored.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>rnd</span><o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>abs(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the absolute value of the total of the arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> absolute<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>sin(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates the
+sine value of the sum of the arguments in degrees.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> sine<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>cos(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US style='mso-ansi-language:EN-US'>Calculates the cosine value of the
+sum of the arguments in degrees.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> cosine<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>tan(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US style='mso-ansi-language:EN-US'>Calculates the tangent value of the
+sum of the arguments in degrees.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span class=SpellE>tg</span>, tang, tangent<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>cot(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US style='mso-ansi-language:EN-US'>Calculates the cotangent value of
+the sum of the arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span class=SpellE>cotg</span>, <span
+class=SpellE>cotang</span>, cotangent<o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>arcSin</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US style='mso-ansi-language:EN-US'>Calculates the angle in degrees
+whose sine value is the sum of the arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span class=SpellE>arcSine</span>, sin_1,
+sine_1<o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>arcCos</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US style='mso-ansi-language:EN-US'>Calculates the angle in degrees
+whose cosine value is the sum of the arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span class=SpellE>arcCosine</span>, cos_1,
+cosine_1<o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>arcTan</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US style='mso-ansi-language:EN-US'>Calculates the angle in degrees
+whose tangent value is the sum of the arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span class=SpellE>arcTg</span>, <span
+class=SpellE>arcTang</span>, <span class=SpellE>arcTangent</span>, tg_1, tan_1,
+tang_1, tangent_1<o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>arcCot</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><span
+lang=EN-US style='mso-ansi-language:EN-US'>Calculates the angle in degrees
+whose cotangent value is the sum of the arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span class=SpellE>arcCotg</span>, <span
+class=SpellE>arcCotang</span>, <span class=SpellE>arcCotangent</span>, cotg_1, cotan_1,
+cotang_1, cotangent_1<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>log(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If there is
+only one argument, calculates base-10 logarithm of the argument. The argument
+must be positive.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If there is
+more than one, calculates base-&lt;number 1&gt; logarithm of the sum of other
+arguments. &lt;number 1&gt; and the sum of the rest must be positive.</span><i><span
+lang=EN-US style='font-size:12.0pt;font-family:"Segoe UI Light",sans-serif;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:"Times New Roman";
+mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:major-bidi;
+color:#1F3763;mso-themecolor:accent1;mso-themeshade:127;mso-ansi-language:EN-US'><o:p></o:p></span></i></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'><span style='mso-spacerun:yes'> 
+</span>logarithm, <span class=SpellE>logarid</span><o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>ln(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates natural
+(base-<i>e­</i>) logarithm of the sum of the parameters, which must be positive.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> loge, <span class=SpellE>natural_logarithm</span>,
+<span class=SpellE>natural_logarid</span></span><span lang=EN-US
+style='font-size:12.0pt;font-family:"Segoe UI Light",sans-serif;mso-ascii-theme-font:
+major-latin;mso-fareast-font-family:"Times New Roman";mso-fareast-theme-font:
+major-fareast;mso-hansi-theme-font:major-latin;mso-bidi-font-family:"Times New Roman";
+mso-bidi-theme-font:major-bidi;color:#1F3763;mso-themecolor:accent1;mso-themeshade:
+127;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>GCD(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the greatest common divisor of the arguments floored.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span class=SpellE>greatestCommonDivisor</span>,
+<span class=SpellE>greatest_common_divisor</span><o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>LCM(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the lowest positive common multiplier of the arguments floored.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> <span class=SpellE>lowestCommonMultiplier</span>,
+<span class=SpellE>lowest_common_multiplier</span><o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>fact(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the factorial of the sum of the arguments floored, which must not be negative.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> factorial<o:p></o:p></span></p>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>P(&lt;n&gt;; &lt;k&gt;)<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the k-permutation of n elements. The arguments are floored and must not be
+negative.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> permutation<o:p></o:p></span></p>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>C(&lt;n&gt;; &lt;k&gt;)<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Calculates
+the k-combination of n elements. The arguments are floored and must not be
+negative.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-indent:-36.0pt'><i><span
+lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span lang=EN-US
+style='mso-ansi-language:EN-US'> combination<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>max(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Retrieves
+the argument with the highest value as the result.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> maximum<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>min(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Retrieves
+the argument with the lowest value as the result.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> minimum<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>average(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Retrieves
+the average value of the arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> avg<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>random(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If there is
+one argument, returns a random number between 0 and &lt;number 1&gt; inclusive.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If there is
+two, returns a random number between &lt;number1&gt; and &lt;number 2&gt;
+inclusive.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> rand<o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>randomInt</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If there is
+one argument, returns a random integer between 0 and &lt;number 1&gt;
+inclusive.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If there is
+two, returns a random integer between &lt;number1&gt; and &lt;number 2&gt;
+inclusive.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>randInt</span>, <span
+class=SpellE>randomInteger</span>, <span class=SpellE>random_int</span><o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>randomInList</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Retrieves a
+random argument as the result.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>randInList</span>,
+<span class=SpellE>random_in_list</span>, <span class=SpellE>rand_in_list</span><o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>isGreater</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;; &lt;number 2&gt;)<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Returns 1
+if &lt;number 1&gt; is greater than &lt;number 2&gt;, 0 otherwise.<o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>isSmaller</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;; &lt;number 2&gt;)<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Returns 1
+if &lt;number 1&gt; is smaller than &lt;number 2&gt;, 0 otherwise.<o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>isEqual</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;; &lt;number 2&gt;)<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Returns 1
+if &lt;number 1&gt; is equal to &lt;number 2&gt;, 0 otherwise.<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>and(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Returns 1
+if all arguments are greater than 0, 0 otherwise.<o:p></o:p></span></p>
+
+<h3><span class=GramE><span lang=EN-US style='mso-ansi-language:EN-US'>or(</span></span><span
+lang=EN-US style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number
+2&gt;][; &lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Returns 1
+if at least one of the arguments is greater than 0, 0 if all arguments are not
+greater than 0.<o:p></o:p></span></p>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>not(&lt;number&gt;)<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Returns 0 if
+the argument is greater than 0, 1 otherwise.<o:p></o:p></span></p>
+
+<h3><span lang=EN-US style='mso-ansi-language:EN-US'>if(&lt;condition<span
+class=GramE>&gt;[</span>; &lt;value if true&gt;][; &lt;value if false&gt;])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Returns
+&lt;value if true&gt; if &lt;condition&gt; is greater than 0, &lt;value if
+false&gt; otherwise.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If
+&lt;value if true&gt;/&lt;value if false&gt; is not present, defaults to 0.<o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>degToRad</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Converts
+the total value of the arguments from degrees to radians.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>degreesToRadians</span>,
+<span class=SpellE>deg_to_rad</span>, <span class=SpellE>degrees_to_radians</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Segoe UI Light",sans-serif;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:"Times New Roman";
+mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:major-bidi;
+color:#1F3763;mso-themecolor:accent1;mso-themeshade:127;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>degToGrad</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Converts
+the total value of the arguments from degrees to gradians.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>degreesToGradians</span>,
+<span class=SpellE>deg_to_grad</span>, <span class=SpellE>degrees_to_gradians</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Segoe UI Light",sans-serif;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:"Times New Roman";
+mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:major-bidi;
+color:#1F3763;mso-themecolor:accent1;mso-themeshade:127;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>radToDeg</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Converts
+the total value of the arguments from radians to degrees.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>radiansToDegrees</span>,
+<span class=SpellE>rad_to_deg</span>, <span class=SpellE>radians_to_degrees</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Segoe UI Light",sans-serif;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:"Times New Roman";
+mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:major-bidi;
+color:#1F3763;mso-themecolor:accent1;mso-themeshade:127;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>radToGrad</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Converts
+the total value of the arguments from radians to gradians.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>radiansToGradians</span>,
+<span class=SpellE>rad_to_grad</span>, <span class=SpellE>radians_to_gradians</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Segoe UI Light",sans-serif;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:"Times New Roman";
+mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:major-bidi;
+color:#1F3763;mso-themecolor:accent1;mso-themeshade:127;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>gradToDeg</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Converts
+the total value of the arguments from radians to degrees.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>gradiansToDegrees</span>,
+<span class=SpellE>grad_to_deg</span>, <span class=SpellE>gradians_to_degrees</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Segoe UI Light",sans-serif;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:"Times New Roman";
+mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:major-bidi;
+color:#1F3763;mso-themecolor:accent1;mso-themeshade:127;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<h3><span class=SpellE><span class=GramE><span lang=EN-US style='mso-ansi-language:
+EN-US'>gradToRad</span></span></span><span class=GramE><span lang=EN-US
+style='mso-ansi-language:EN-US'>(</span></span><span lang=EN-US
+style='mso-ansi-language:EN-US'>&lt;number 1&gt;[; &lt;number 2&gt;][;
+&lt;number 3&gt;][…])<o:p></o:p></span></h3>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>Converts
+the total value of the arguments from gradians to radians.<o:p></o:p></span></p>
+
+<p class=MsoNormal><i><span lang=EN-US style='mso-ansi-language:EN-US'>Aliases:</span></i><span
+lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>gradiansToRadians</span>,
+<span class=SpellE>grad_to_rad</span>, <span class=SpellE>gradians_to_radians</span></span><span
+lang=EN-US style='font-size:12.0pt;font-family:"Segoe UI Light",sans-serif;
+mso-ascii-theme-font:major-latin;mso-fareast-font-family:"Times New Roman";
+mso-fareast-theme-font:major-fareast;mso-hansi-theme-font:major-latin;
+mso-bidi-font-family:"Times New Roman";mso-bidi-theme-font:major-bidi;
+color:#1F3763;mso-themecolor:accent1;mso-themeshade:127;mso-ansi-language:EN-US'><o:p></o:p></span></p>
+
+<h1><span lang=EN-US style='mso-ansi-language:EN-US'>Source code, copyright and
+contact<o:p></o:p></span></h1>
+
+<p class=MsoNormal><span class=SpellE><span lang=EN-US style='mso-ansi-language:
+EN-US'>CalcIt</span></span><span lang=EN-US style='mso-ansi-language:EN-US'>
+Pascal is open source on GitHub: <a
+href="https://github.com/leduyquang753/CalcItPascal">https://github.com/leduyquang753/CalcItPascal</a>.
+You can read, download, modify, contribute under the terms of the MIT license:<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><b><i><span lang=EN-US
+style='mso-ansi-language:EN-US'>The MIT License<o:p></o:p></span></i></b></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><i><span lang=EN-US
+style='mso-ansi-language:EN-US'>Copyright © 2019 Lê Duy Quang<o:p></o:p></span></i></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><i><span lang=EN-US
+style='mso-ansi-language:EN-US'>Permission is hereby granted, free of charge,
+to any person obtaining a copy of this software and associated documentation
+files (the &quot;Software&quot;), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to permit
+persons to whom the Software is furnished to do so, subject to the following
+conditions:<o:p></o:p></span></i></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><i><span lang=EN-US
+style='mso-ansi-language:EN-US'>The above copyright notice and this permission
+notice shall be included in all copies or substantial portions of the Software.<o:p></o:p></span></i></p>
+
+<p class=MsoNormal style='margin-left:36.0pt'><i><span lang=EN-US
+style='mso-ansi-language:EN-US'>The software is provided &quot;as is&quot;,
+without warranty of any kind, express or implied, including but not limited to
+the warranties of merchantability, fitness for a particular purpose and
+noninfringement. In no event shall the authors or copyright holders be liable
+for any claim, damages or other liability, whether in an action of contract,
+tort or otherwise, arising from, out of or in connection with the software or
+the use or other dealings in the software.<o:p></o:p></span></i></p>
+
+<h2><span lang=EN-US style='mso-ansi-language:EN-US'>Problem detection and
+reporting<o:p></o:p></span></h2>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If the
+program crashes, you may report the crash as an issue in the GitHub repository
+linked above.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If you
+believe the program’s calculation result is wrong, please do the following
+before submitting an issue on GitHub:<o:p></o:p></span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='mso-list:l5 level1 lfo7'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Check if the expression is entered correctly
+     as you want it to be.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l5 level1 lfo7'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Check if the operators’ precedence is
+     correctly set in the expression.<o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l5 level1 lfo7'><span lang=EN-US
+     style='mso-ansi-language:EN-US'>Perform the calculation on a trustable
+     calculator device/program and compare the results.<o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span lang=EN-US style='mso-ansi-language:EN-US'>If you want
+to suggest a new feature of modification, feel free to do so by submitting an
+issue.<o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>
