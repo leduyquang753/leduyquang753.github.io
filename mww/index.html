@@ -34,6 +34,10 @@
 		#appName {
 			flex-grow: 1;
 		}
+		#siteAddress {
+			user-select: none;
+			cursor: pointer;
+		}
 		#messagesPanel {
 			left: 0px;
 			right: 0px;
@@ -108,6 +112,9 @@
 		var checkScrollLock;
 		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
+		if (window.matchMedia('(display-mode: standalone)').matches) {
+			document.getElementById('titleBar').innerHTML = '<div id=siteAddress><i>(Nothing is being watched.)</i></div>';
+		}
 		
 		Array.prototype.del = function(toDel) {
 			let ind = this.indexOf(toDel);
@@ -120,7 +127,16 @@
 			return await fetch('https://cors-anywhere.herokuapp.com/'+url).then(response => response.text());
 		}
 		
+		async function changeSite() {
+			let newSite = prompt('Enter the site address to watch:');
+			if (newSite != null) {
+				document.cookie = newSite;
+				location.reload();
+			}
+		}
+		
 		async function initialize() {
+			if (document.cookie == '') return; else site = document.cookie;
 			lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
 			statusElement = document.getElementById('activity');
 			panel = document.getElementById('messagesPanel');
@@ -290,7 +306,7 @@
 		}
 			
 		async function processLogEvent(res, timestamp) {
-			let logEvent = JSON.parse(await loadPage("https://"+site+"/api.php?action=query&list=logevents&lestart="+timestamp+"&leend="+timestamp+"&format=json&lelimit=5")).logEvents[0];
+			let logEvent = JSON.parse(await loadPage("https://"+site+"/api.php?action=query&list=logevents&lestart="+timestamp+"&leend="+timestamp+"&format=json&lelimit=5")).logevents[0];
 			let comment = logEvent.comment == '' ? '<i>(No description provided.)</i>' : logEvent.comment;
 			if (type == 'protect') {
 				switch (logEvent.action) {
@@ -318,7 +334,7 @@
 	<body onLoad='initialize()'>
 		<div id=titleBar>
 			<div id=appName><b>MediaWiki watchdog</b></div>
-			<div id=siteAddress><i>(Nothing is being watched.)</i></div>
+			<div id=siteAddress onclick='changeSite()'><i>(Nothing is being watched.)</i></div>
 		</div>
 		<div id=messagesPanel>
 		</div>
