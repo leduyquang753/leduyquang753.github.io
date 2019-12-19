@@ -112,9 +112,6 @@
 		var checkScrollLock;
 		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
-		if (window.matchMedia('(display-mode: standalone)').matches) {
-			document.getElementById('titleBar').innerHTML = '<div id=siteAddress><i>(Nothing is being watched.)</i></div>';
-		}
 		
 		Array.prototype.del = function(toDel) {
 			let ind = this.indexOf(toDel);
@@ -136,6 +133,9 @@
 		}
 		
 		async function initialize() {
+			if (window.matchMedia('(display-mode: standalone)').matches) {
+				document.getElementById('titleBar').innerHTML = '<div id=siteAddress><i>(Nothing is being watched.)</i></div>';
+			}
 			if (document.cookie == '') return; else site = document.cookie;
 			lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
 			statusElement = document.getElementById('activity');
