@@ -47,7 +47,7 @@
 			background-color: #A9FBFF;
 		}
 		.message {
-			background-color: #DDFEFF;
+			background-color: rgba(255, 255, 255, 0.75);
 			margin-top: 10px;
 			border-radius: 5px;
 			left: 0px;
@@ -136,49 +136,55 @@
 			if (window.matchMedia('(display-mode: standalone)').matches) {
 				document.getElementById('titleBar').innerHTML = '<div id=siteAddress onclick="changeSite()"><i>(Nothing is being watched.)</i></div>';
 			}
-			if (document.cookie == '') return; else site = document.cookie;
-			lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
+			if (document.cookie == '') { document.getElementById('messagesPanel').insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div></div><div>There is no site set to be watched. Click the &quot;<i>(Nothing is being watched.)</i>&quot; text to set the site. Later on you can also click the same location to change it.</div></div>"); return; } else site = document.cookie;
+			document.getElementById('siteAddress').innerHTML = site;
 			statusElement = document.getElementById('activity');
 			panel = document.getElementById('messagesPanel');
 			checkSound = document.getElementById('checkSound');
 			checkScrollLock = document.getElementById('checkScrollLock');
 			document.head.insertAdjacentHTML('beforeEnd', '<base href="https://'+site+'" target="_blank">');
-			updateInactiveTime();
-			document.getElementById('siteAddress').innerHTML = site;
-			panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div><div class=buttonIcon><a target='_blank' target='_blank' href='/Special:RecentChanges' target=_blank></a></div></div><div>Started watching.</div></div>");
-			
-			while (true) {
-				await sleep();
-				changes = JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rcdir=newer&rcstart='+new Date(lastActive+1000).toISOString()+'&rcprop=ids|flags|user|parsedcomment|timestamp|title|sizes|tags|loginfo&rclimit=500&format=json'));
-				let inactive = true;
-				for (change of changes['query']['recentchanges']) {
-					lastActive = Date.parse(change['timestamp']);
-					let res = processChange(change);
-					if (res == null) {}//panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(lastActive)+" | ???</div></div>");
-					else {
-						let html = '<div class=message><div class=messageBar><div Class=messageBarLeft>'+formatDateTime(lastActive)+' | '+res.header+'</div></div>';
-						if ('flags' in res) html += '<div><span class=icon></span> ' + res.flags + '</div>';
-						if ('duration' in res) html += '<div><span class=icon></span> ' + res.duration + '</div>';
-						if ('expiry' in res) html += '<div><span class=icon></span> ' + res.expiry + '</div>';
-						html += '<div>' + res.desc + '</div>';
-						change.tags.del('move'); change.tags.del('delete');
-						if (change.tags.length > 0) {
-							let notFirst = false;
-							let tagText = '';
-							for (tag of change.tags) {
-								tagText += (notFirst ? ', ' : '') + tag;
-								notFirst = true;
-							}
-							html += '<div><span class=icon></span> ' + tagText + '</div>';
-						}
-						html += '</div>';
-						panel.insertAdjacentHTML('beforeEnd', html);
-						if (!checkScrollLock.checked) panel.scrollTop = panel.scrollHeight;
-						inactive = false;
-					}
-				}
+			try {
+				lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
 				updateInactiveTime();
-				if (!inactive && checkSound.checked) notifSound.play();
+				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div><div class=buttonIcon><a target='_blank' target='_blank' href='/Special:RecentChanges' target=_blank></a></div></div><div>Started watching.</div></div>");
+				
+				while (true) {
+					await sleep();
+					changes = JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rcdir=newer&rcstart='+new Date(lastActive+1000).toISOString()+'&rcprop=ids|flags|user|parsedcomment|timestamp|title|sizes|tags|loginfo&rclimit=500&format=json'));
+					let inactive = true;
+					for (change of changes['query']['recentchanges']) {
+						lastActive = Date.parse(change['timestamp']);
+						let res = processChange(change);
+						if (res == null) {}//panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(lastActive)+" | ???</div></div>");
+						else {
+							let html = '<div class=message><div class=messageBar><div Class=messageBarLeft>'+formatDateTime(lastActive)+' | '+res.header+'</div></div>';
+							if ('flags' in res) html += '<div><span class=icon></span> ' + res.flags + '</div>';
+							if ('duration' in res) html += '<div><span class=icon></span> ' + res.duration + '</div>';
+							if ('expiry' in res) html += '<div><span class=icon></span> ' + res.expiry + '</div>';
+							html += '<div>' + res.desc + '</div>';
+							change.tags.del('move'); change.tags.del('delete');
+							if (change.tags.length > 0) {
+								let notFirst = false;
+								let tagText = '';
+								for (tag of change.tags) {
+									tagText += (notFirst ? ', ' : '') + tag;
+									notFirst = true;
+								}
+								html += '<div><span class=icon></span> ' + tagText + '</div>';
+							}
+							html += '</div>';
+							panel.insertAdjacentHTML('beforeEnd', html);
+							if (!checkScrollLock.checked) panel.scrollTop = panel.scrollHeight;
+							inactive = false;
+						}
+					}
+					updateInactiveTime();
+					if (!inactive && checkSound.checked) notifSound.play();
+				}
+			} catch (error) {
+				panel.style.backgroundColor = '#EE9797';
+				console.error(error);
+				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+" | <b>ERROR</b></div></div><div>An error occured while running the app:<br><i>"+error.toString()+"</i><br>Please check the console for details of what happened. After the problem has been fixed (if there is any chance), please reload the app page.</div></div>");
 			}
 		}
 		
