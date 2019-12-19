@@ -134,7 +134,7 @@
 		
 		async function initialize() {
 			if (window.matchMedia('(display-mode: standalone)').matches) {
-				document.getElementById('titleBar').innerHTML = '<div id=siteAddress><i>(Nothing is being watched.)</i></div>';
+				document.getElementById('titleBar').innerHTML = '<div id=siteAddress onclick="changeSite()"><i>(Nothing is being watched.)</i></div>';
 			}
 			if (document.cookie == '') return; else site = document.cookie;
 			lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
