@@ -1,0 +1,21 @@
+﻿{
+	"short_name": "Watchdog",
+	"name": "MediaWiki watchdog",
+	"icons": [
+		{
+			"src": "/iconMedium.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "/iconLarge.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		}
+	],
+	"start_url": "/main.html",
+	"background_color": "#FFBE72",
+	"theme_color": "#FFBE72",
+	"display": "standalone",
+	"prefer_related_applications": false
+}

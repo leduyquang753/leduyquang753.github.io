@@ -1,0 +1,334 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="manifest" href="https://leduyquang753.github.io/manifest.json">
+		<link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALkSURBVDhPrVJLSFRRGP7POfcxc++M48w0Dppl9hAibFFSVIg9pCBqEwUZRVG0yNq4iFrUQhCiVa2KoBekC8leEDREIhVERhQxaYVpaqJjovO+c+fcc8/pjg3RLGrVt/kPh//7znf+/4N/4fHtSnfx+FfgYi3B66fh3c86A3UVFea16ItFK770L20s3A/0NZD5hj+AirUEb3v9t9wEVZd78dqMZX8h2N0JXKomLHDJxtnG5RuH7hVbSwU+9tZuV+3gS+H7+sSriCZsMcjaAty6zITQHhIFb3JMp37E9O31Wz6PFzglX0gn417QxoZc3A5KpglazgSdUlAsU3Jpub1YY2Gbow63DmqRAijatx5rvtQ5lyu/HzEay8SSDR6c91oJBLIpAyg26GEGIqgAJTLkKYKsIT1OxUMt63YOZrCMcxIw80EqZr7j6ezmSp151YwEMwMu+BYFmPhAIPbZAyRtgXAcmTlxOZ8NHCqQCw5w1pzTmDB2u332LsmvIa67YPa7BHHDhhEgMO7oG5MWcBOAMkIdBzUWmmue9+8Ar90xkWCJijtEaPdV284jZ3DpJECWS5AU1GkRgBUEXBBQJXnY61rQ0bBtpucX3RF43rNUJvr0PixlD1JqqYW1LK4XEFYYLGESBJkFpAzgUDuFo2fSKynMXo++CrW+66sLFQQkIZiSSsozNrW7fB7c5AyqVq3lsEpLw+QQybfdoKr6AcHZVh9k8lwcOZmuevOeNS9eqN8sCPzOweCLqhYZWcf95fIWBDaYBoXDbem4riF/+ykdzl/NgRCcX7lY3lWzZsYtBIhlNUuO/c5BPIn6nQ09MXKsO2nAhUQeW9NzfIo6ETIxB26DPfZdfBoeJQG/D5cXaZ6SJPbdrVICQboZCfWty5MZiUTkDT2RRL9hiOTp1nBHqEJsbd4zRbgA7rx+YnhsdLZILcWjGyHc/3TBgcI50l22uve+t9pXhiKqgh46xPB80/8BwE+OB0XlXvkaYgAAAABJRU5ErkJggg=="/>
+		<title>MediaWiki watchdog</title>
+	</head>
+	<style>
+		body {
+			font-family: Segoe UI;
+			margin: 0px;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+		a {
+			text-decoration: none;
+			color: #00A;
+			user-select: none;
+		}
+		input[type="checkbox"] {
+			vertical-align: middle;
+			position: relative;
+			bottom: 1px;
+		}
+		#titleBar {
+			display: flex;
+			background-color: #FFBE7C;
+			padding: 5px;
+			left: 0px;
+			right: 0px;
+			border-bottom: 1px solid #B5B5B5;
+		}
+		#appName {
+			flex-grow: 1;
+		}
+		#messagesPanel {
+			left: 0px;
+			right: 0px;
+			flex-grow: 1;
+			overflow: auto;
+			padding: 0px 10px 10px 10px;
+			background-color: #A9FBFF;
+		}
+		.message {
+			background-color: #DDFEFF;
+			margin-top: 10px;
+			border-radius: 5px;
+			left: 0px;
+			right: 0px;
+			padding: 5px;
+		}
+		.messageBar {
+			display: flex;
+		}
+		.messageBarLeft {
+			flex-grow: 1;
+		}
+		.diffAdd {
+			color: #080;
+		}
+		.diffChange {
+			color: #880;
+		}
+		.diffRemove {
+			color: #800;
+		}
+		.diffLarge {
+			font-weight: bold;
+		}
+		#statusBar {
+			display: flex;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			background-color: #FFF3B0;
+			border-top: 1px solid #B5B5B5;
+			padding: 5px;
+		}
+		#statusLeft {
+			flex-grow: 1;
+		}
+		.button {
+			color: #00A;
+			user-select: none;
+			cursor: pointer;
+		}
+		.buttonIcon {
+			font-family: Segoe UI Symbol;
+			margin-left: 7px;
+		}
+		.icon {
+			font-family: Segoe UI Symbol;
+		}
+		#statusBar div * {
+			display: inline-block;
+		}
+	</style>
+	<script>
+		var site = 'minecraft.gamepedia.com';
+		var timezone = +7;
+		var lastActive = 0;
+		var parser = new DOMParser();
+		var statusElement;
+		var notifSound = new Audio('new_change.wav');
+		var panel;
+		var checkSound;
+		var checkScrollLock;
+		
+		Array.prototype.del = function(toDel) {
+			let ind = this.indexOf(toDel);
+			if (ind < 0) return;
+			this.splice(ind, 1);
+		}
+		
+		async function loadPage(url) {
+			let res = '';
+			return await fetch('https://cors-anywhere.herokuapp.com/'+url).then(response => response.text());
+		}
+		
+		async function initialize() {
+			lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
+			statusElement = document.getElementById('activity');
+			panel = document.getElementById('messagesPanel');
+			checkSound = document.getElementById('checkSound');
+			checkScrollLock = document.getElementById('checkScrollLock');
+			document.head.insertAdjacentHTML('beforeEnd', '<base href="https://'+site+'" target="_blank">');
+			updateInactiveTime();
+			document.getElementById('siteAddress').innerHTML = site;
+			panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div><div class=buttonIcon><a target='_blank' target='_blank' href='/Special:RecentChanges' target=_blank></a></div></div><div>Started watching.</div></div>");
+			
+			while (true) {
+				await sleep();
+				changes = JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rcdir=newer&rcstart='+new Date(lastActive+1000).toISOString()+'&rcprop=ids|flags|user|parsedcomment|timestamp|title|sizes|tags|loginfo&rclimit=500&format=json'));
+				let inactive = true;
+				for (change of changes['query']['recentchanges']) {
+					lastActive = Date.parse(change['timestamp']);
+					let res = processChange(change);
+					if (res == null) {}//panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(lastActive)+" | ???</div></div>");
+					else {
+						let html = '<div class=message><div class=messageBar><div Class=messageBarLeft>'+formatDateTime(lastActive)+' | '+res.header+'</div></div>';
+						if ('flags' in res) html += '<div><span class=icon></span> ' + res.flags + '</div>';
+						if ('duration' in res) html += '<div><span class=icon></span> ' + res.duration + '</div>';
+						if ('expiry' in res) html += '<div><span class=icon></span> ' + res.expiry + '</div>';
+						html += '<div>' + res.desc + '</div>';
+						change.tags.del('move'); change.tags.del('delete');
+						if (change.tags.length > 0) {
+							let notFirst = false;
+							let tagText = '';
+							for (tag of change.tags) {
+								tagText += (notFirst ? ', ' : '') + tag;
+								notFirst = true;
+							}
+							html += '<div><span class=icon></span> ' + tagText + '</div>';
+						}
+						html += '</div>';
+						panel.insertAdjacentHTML('beforeEnd', html);
+						if (!checkScrollLock.checked) panel.scrollTop = panel.scrollHeight;
+						inactive = false;
+					}
+				}
+				updateInactiveTime();
+				if (!inactive && checkSound.checked) notifSound.play();
+			}
+		}
+		
+		function formatDateTime(dateTimeIn) {
+			let parsed = new Date(dateTimeIn);
+			let day = parsed.getDay();
+			let min = parsed.getMinutes();
+			let sec = parsed.getSeconds();
+			return (day == 0 ? 8 : day+1) + '; ' + parsed.getDate() + '/' + parsed.getMonth()
+			+ '/' + parsed.getFullYear() + '; ' + parsed.getHours() + (min < 10 ? 'h0' : 'h')
+			+ min + (sec < 10 ? ':0' : ':') + sec;
+		}
+		
+		function updateInactiveTime() {
+			let totalMinutes = Math.floor((Date.now()-lastActive)/60000);
+			
+			if (totalMinutes == 0) { statusElement.innerHTML = 'Active'; return; }
+			
+			let days = Math.floor(totalMinutes/1440);
+			let hours = Math.floor(totalMinutes/60)%24;
+			let minutes = totalMinutes%60;
+			
+			statusElement.innerHTML = 'Inactive for ' + (days > 0 ? '' + days + 'd' : '') + (totalMinutes > 59 ? '' + hours + 'h' : '')	+ (minutes < 10 && totalMinutes > 59 ? '0' : '') + minutes + (totalMinutes < 60 ? "'" : '');
+		}
+		
+		function sleep() {
+			return new Promise(resolve => setTimeout(resolve, 30000));
+		}
+		
+		function getChangeFormatting(amount) {
+			if (amount == 0) return 'diffChange';
+			else return (amount > 0 ? 'diffAdd' : 'diffRemove')
+			+ (Math.abs(amount) > 499 ? ' diffLarge' : '');
+		}
+		
+		function formatPageName(name) {
+			return name.replace(/ /g, '_');
+		}
+		
+		function formatDuration(secs) {
+			sec = secs%60;
+			min = Math.floor(secs%3600/60);
+			hour = Math.floor(secs%86400/3600);
+			day = Math.floor(secs/86400);
+			
+			return (day > 0 ? day + 'd' : '') + (secs > 3599 && (secs < 86400 || secs%86400 != 0) ? hour + 'h' : '') + (sec == 0 ? (secs > 3599 && min < 10 ? '0' : '') + min + (secs < 3600 ? "'" : '') : secs > 59 && (secs < 3600 || secs%3600 != 0) ? ':' + (sec < 10 ? '0' : '') + sec : secs < 60 ? sec + '"' : '');
+		}
+		
+		function processChange(entry) {
+			if ('flags' in entry && 'bot' in entry['flags']) return null;
+			comment = entry.parsedcomment == '' ? '<i>(No description provided.)</i>' : entry.parsedcomment;
+			res = new Object();
+			switch (entry.type) {
+				case 'new':
+					res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>✳</span> <a target="_blank" class=diffAdd href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<span class="'+getChangeFormatting(entry.newlen)+'">'+entry.newlen+'</span>)';
+					res.desc = comment;
+					break;
+				case 'categorize':
+					res.header = '<span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
+					res.desc = comment;
+					break;
+				case 'edit':
+					if ('newlen' in entry && 'oldlen' in entry) {
+						sizechange = entry.newlen-entry.oldlen;
+						let icon = '', userIcons = '';
+						if (entry.tags.includes('mw-undo')) {
+							entry.tags.del('mw-undo');
+							icon = '';
+						} else if (entry.tags.includes('mw-rollback')) {
+							entry.tags.del('mw-rollback');
+							icon = '';
+						}
+						if (entry.tags.includes('visualeditor')) {
+							entry.tags.del('visualeditor');
+							userIcons += '';
+						}
+						if (entry.tags.includes('mobile edit')) {
+							entry.tags.del('mobile edit');
+							userIcons += '';
+						}
+						if (entry.tags.includes('mobile web edit')) {
+							entry.tags.del('mobile web edit');
+						}
+						res.header = (userIcons == '' ? '' : '<span class=icon>'+userIcons+'</span>)+'<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>'+icon+'</span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<a target="_blank" class="'+getChangeFormatting(sizechange)+'" href="/index.php?diff='+change.revid+'&oldid='+change.old_revid+'"/>'+(sizechange > 0 ? '+' : sizechange == 0 ? '' : '–')+(''+sizechange).replace('-','')+'</a>'+('minor' in entry ? ', minor' : '')+')';
+						res.desc = comment;
+					} else {
+						res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
+						res.desc = comment;
+					} break;
+				case 'log':
+					switch (entry.logtype) {
+						case 'block':
+							if ('flags' in entry.logparams) {
+								let fl = '';
+								let second = false;
+								for (stri in entry.logparams.flags) {
+									fi += (second ? ', ' : '') + stri;
+									second = true;
+								}
+								res.flags = fl;
+							}
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" class=diffRemove href="/'+entry.title+'">'+entry.title.substr(5)+'</a>';
+							res.duration = 'expiry' in entry.logparams ? formatDuration(Math.floor((Date.parse(entry.logparams.expiry)-Date.parse(entry.timestamp))/1000)) : '∞';
+							if ('expiry' in entry.logparams) res.expiry = formatDateTime(entry.logparams.expiry);
+							res.desc = comment;
+							break;
+						case 'upload':
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>'+(entry.logaction == 'overwrite' ? '' : '✳')+'</span> <a target="_blank"'+(entry.logaction == 'overwrite' ? '' : 'class=diffAdd')+' href="/'+formatPageName(entry.title)+'">'+entry.title.substr(5)+'</a>';
+							res.desc = comment;
+							break;
+						case 'move':
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> '+entry.title+' → <a target="_blank" href="/'+formatPageName(entry.logparams.target_title)+'">'+entry.logparams.target_title+'</a>';
+							res.desc = comment;
+							break;
+						case 'delete':
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" class=diffRemove href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
+							res.desc = comment;
+							break;
+						default:
+							processLogEvent(res, entry.timestamp);
+					}
+					return res;
+			}
+			return res;
+		}
+			
+		async function processLogEvent(res, timestamp) {
+			let logEvent = JSON.parse(await loadPage("https://"+site+"/api.php?action=query&list=logevents&lestart="+timestamp+"&leend="+timestamp+"&format=json&lelimit=5")).logEvents[0];
+			let comment = logEvent.comment == '' ? '<i>(No description provided.)</i>' : logEvent.comment;
+			if (type == 'protect') {
+				switch (logEvent.action) {
+					case 'protect':
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.desc = comment;
+						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
+						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
+						break;
+					case 'unprotect':
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.desc = comment;
+						break;
+					case 'modify':
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.desc = comment;
+						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
+						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
+						break;
+				}
+			}
+			return null;
+		}
+	</script>
+	<body onLoad='initialize()'>
+		<div id=titleBar>
+			<div id=appName><b>MediaWiki watchdog</b></div>
+			<div id=siteAddress><i>(Nothing is being watched.)</i></div>
+		</div>
+		<div id=messagesPanel>
+		</div>
+		<div id=statusBar>
+			<div id=statusLeft>
+				<div class=statusLeftAligned id=activity>Not watching.</div>
+			</div>
+			<div id=statusRight>
+				<div><label style='user-select: none'><input id=checkSound type=checkbox checked>Sound notifications</label> | </div>
+				<div><label style='user-select: none'><input id=checkScrollLock type=checkbox>Scroll lock</label> | </div>
+				<div class=button id=buttonClear onclick="document.getElementById('messagesPanel').innerHTML = ''">Clear</div>
+			</div>
+		</div>
+	</body>
+</html>
