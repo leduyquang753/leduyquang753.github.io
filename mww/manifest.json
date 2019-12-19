@@ -3,17 +3,17 @@
 	"name": "MediaWiki watchdog",
 	"icons": [
 		{
-			"src": "/iconMedium.png",
+			"src": "/mww/iconMedium.png",
 			"type": "image/png",
 			"sizes": "192x192"
 		},
 		{
-			"src": "/iconLarge.png",
+			"src": "/mww/iconLarge.png",
 			"type": "image/png",
 			"sizes": "512x512"
 		}
 	],
-	"start_url": "/main.html",
+	"start_url": "/mww/main.html",
 	"background_color": "#FFBE72",
 	"theme_color": "#FFBE72",
 	"display": "standalone",
