@@ -13,7 +13,7 @@
 			"sizes": "512x512"
 		}
 	],
-	"start_url": "/mww/main.html",
+	"start_url": "/mww/index.html",
 	"background_color": "#FFBE72",
 	"theme_color": "#FFBE72",
 	"display": "standalone",
