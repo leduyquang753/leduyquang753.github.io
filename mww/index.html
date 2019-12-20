@@ -61,13 +61,13 @@
 			flex-grow: 1;
 		}
 		.diffAdd {
-			color: #080;
+			color: #0A0;
 		}
 		.diffChange {
-			color: #880;
+			color: #AA0;
 		}
 		.diffRemove {
-			color: #800;
+			color: #A00;
 		}
 		.diffLarge {
 			font-weight: bold;
@@ -153,10 +153,10 @@
 					changes = JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rcdir=newer&rcstart='+new Date(lastActive+1000).toISOString()+'&rcprop=ids|flags|user|parsedcomment|timestamp|title|sizes|tags|loginfo&rclimit=500&format=json'));
 					let inactive = true;
 					for (change of changes['query']['recentchanges']) {
-						lastActive = Date.parse(change['timestamp']);
 						let res = processChange(change);
 						if (res == null) {}//panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(lastActive)+" | ???</div></div>");
 						else {
+							lastActive = Date.parse(change['timestamp']);
 							let html = '<div class=message><div class=messageBar><div Class=messageBarLeft>'+formatDateTime(lastActive)+' | '+res.header+'</div></div>';
 							if ('flags' in res) html += '<div><span class=icon></span> ' + res.flags + '</div>';
 							if ('duration' in res) html += '<div><span class=icon></span> ' + res.duration + '</div>';
@@ -184,7 +184,7 @@
 			} catch (error) {
 				panel.style.backgroundColor = '#EE9797';
 				console.error(error);
-				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+" | <b>ERROR</b></div></div><div>An error occured while running the app:<br><i>"+error.toString()+"</i><br>Please check the console for details of what happened. After the problem has been fixed (if there is any chance), please reload the app page.</div></div>");
+				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+" | <b>ERROR</b></div></div><div>An error occured while running the app:<br><i>"+error.toString()+"</i><br>Please check the console for details of what happened. When the problem has been fixed (if there is any chance), please reload the app page.</div></div>");
 			}
 		}
 		
@@ -193,9 +193,7 @@
 			let day = parsed.getDay();
 			let min = parsed.getMinutes();
 			let sec = parsed.getSeconds();
-			return (day == 0 ? 8 : day+1) + '; ' + parsed.getDate() + '/' + parsed.getMonth()
-			+ '/' + parsed.getFullYear() + '; ' + parsed.getHours() + (min < 10 ? 'h0' : 'h')
-			+ min + (sec < 10 ? ':0' : ':') + sec;
+			return (day == 0 ? 8 : day+1) + '; ' + parsed.getDate() + '/' + parsed.getMonth() + '/' + parsed.getFullYear() + '; ' + parsed.getHours() + (min < 10 ? 'h0' : 'h') + min + (sec < 10 ? ':0' : ':') + sec;
 		}
 		
 		function updateInactiveTime() {
@@ -304,7 +302,7 @@
 							res.desc = comment;
 							break;
 						default:
-							processLogEvent(res, entry.timestamp);
+							if (!processLogEvent(res, entry.timestamp)) return null;
 					}
 					return res;
 			}
@@ -321,20 +319,20 @@
 						res.desc = comment;
 						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
 						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
-						break;
+						return true;
 					case 'unprotect':
 						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
-						break;
+						return true;
 					case 'modify':
 						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
 						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
 						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
-						break;
+						return true;
 				}
 			}
-			return null;
+			return false;
 		}
 	</script>
 	<body onLoad='initialize()'>
