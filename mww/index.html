@@ -222,7 +222,7 @@
 			let day = parsed.getDay();
 			let min = parsed.getMinutes();
 			let sec = parsed.getSeconds();
-			return (day == 0 ? 8 : day+1) + '; ' + parsed.getDate() + '/' + parsed.getMonth() + '/' + parsed.getFullYear() + '; ' + parsed.getHours() + (min < 10 ? 'h0' : 'h') + min + (sec < 10 ? ':0' : ':') + sec;
+			return (day == 0 ? 8 : day+1) + '; ' + parsed.getDate() + '/' + (parsed.getMonth()+1) + '/' + parsed.getFullYear() + '; ' + parsed.getHours() + (min < 10 ? 'h0' : 'h') + min + (sec < 10 ? ':0' : ':') + sec;
 		}
 		
 		function updateInactiveTime() {
