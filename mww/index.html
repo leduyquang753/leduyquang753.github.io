@@ -102,14 +102,30 @@
 	</style>
 	<script>
 		var site = 'minecraft.gamepedia.com';
-		var timezone = +7;
+		//const timezone = +7;
 		var lastActive = 0;
-		var parser = new DOMParser();
 		var statusElement;
-		var notifSound = new Audio('New_change.wav');
+		const notifSound = new Audio('New_change.wav');
 		var panel;
 		var checkSound;
 		var checkScrollLock;
+		
+		const profileFieldMap = {
+			'username': 'Username',
+			'aboutme': 'About',
+			'favwiki': 'Favorite wiki',
+			'location': 'Location',
+			'lnk-battlenet': 'Battlenet',
+			'link-discord': 'Discord',
+			'link-facebook': 'Facebook',
+			'link-psn': 'PSN',
+			'link-reddit': 'Reddit',
+			'link-steam': 'Steam',
+			'link-twitch': 'Twitch',
+			'link-twitter': 'Twitter',
+			'link-vk': 'VK',
+			'link-xbl': 'XBL'
+		}
 		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
 		
@@ -157,7 +173,12 @@
 						if (res == null) {}//panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(lastActive)+" | ???</div></div>");
 						else {
 							lastActive = Date.parse(change['timestamp']);
-							let html = '<div class=message><div class=messageBar><div Class=messageBarLeft>'+formatDateTime(lastActive)+' | '+res.header+'</div></div>';
+							let missingSignature = false;
+							if (change.tags.includes('missing signature')) {
+								change.tags.del('missing signature');
+								missingSignature = true;
+							}
+							let html = '<div class=message><div class=messageBar><div Class=messageBarLeft>'+formatDateTime(lastActive)+' | '+res.header+'</div>'+(missingSignature ? '<div class=icon></div>' : '')+'</div>';
 							if ('flags' in res) html += '<div><span class=icon></span> ' + res.flags + '</div>';
 							if ('duration' in res) html += '<div><span class=icon></span> ' + res.duration + '</div>';
 							if ('expiry' in res) html += '<div><span class=icon></span> ' + res.expiry + '</div>';
@@ -301,6 +322,23 @@
 							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" class=diffRemove href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
 							res.desc = comment;
 							break;
+						case 'curseprofile':
+							if (entry.logaction.startsWith('comment')) {
+								let icon = '';
+								switch (entry.logaction) {
+									case 'comment-created': icon = ''; break;
+									case 'comment-deleted': icon = ''; break;
+									case 'comment-edited': icon = ''; break;
+									case 'comment-purged': icon = ''; break;
+									case 'comment-replied': icon = ''; break;
+								}
+								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <a class=icon href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+icon+'</span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
+								res.desc = comment;
+							} else { // profile-edited
+								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a> ('+profileFieldMap[entry.logparams['4:section']]+')';
+								res.desc = comment;
+							}
+							break;
 						default:
 							if (!processLogEvent(res, entry.timestamp)) return null;
 					}
@@ -315,17 +353,17 @@
 			if (type == 'protect') {
 				switch (logEvent.action) {
 					case 'protect':
-						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
 						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
 						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
 						return true;
 					case 'unprotect':
-						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
 						return true;
 					case 'modify':
-						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
 						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
 						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
