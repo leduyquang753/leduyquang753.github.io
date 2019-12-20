@@ -264,7 +264,7 @@
 		async function processChange(entry) {
 			if ('flags' in entry && 'bot' in entry['flags']) return null;
 			comment = entry.parsedcomment == '' ? '<i>(No description provided.)</i>' : entry.parsedcomment;
-			res = new Object();
+			let res = new Object();
 			switch (entry.type) {
 				case 'new':
 					res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>✳</span> <a target="_blank" class=diffAdd href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<span class="'+getChangeFormatting(entry.newlen)+'">'+entry.newlen+'</span>)';
