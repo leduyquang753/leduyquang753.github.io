@@ -127,6 +127,14 @@
 			'link-xbl': 'XBL'
 		}
 		
+		commentActionIconMap {
+			'comment-created': '',
+			'comment-deleted': '',
+			'comment-edited': '',
+			'comment-purged': '',
+			'comment-replied': ''
+		}
+		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
 		
 		Array.prototype.del = function(toDel) {
@@ -324,15 +332,7 @@
 							break;
 						case 'curseprofile':
 							if (entry.logaction.startsWith('comment')) {
-								let icon = '';
-								switch (entry.logaction) {
-									case 'comment-created': icon = ''; break;
-									case 'comment-deleted': icon = ''; break;
-									case 'comment-edited': icon = ''; break;
-									case 'comment-purged': icon = ''; break;
-									case 'comment-replied': icon = ''; break;
-								}
-								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <a class=icon href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+icon+'</span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
+								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <a class=icon href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+commentActionIconMap[entry.logaction]+'</span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
 								res.desc = comment;
 							} else { // profile-edited
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a> ('+profileFieldMap[entry.logparams['4:section']]+')';
