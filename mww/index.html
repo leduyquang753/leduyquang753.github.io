@@ -177,7 +177,7 @@
 					changes = JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rcdir=newer&rcstart='+new Date(lastActive+1000).toISOString()+'&rcprop=ids|flags|user|parsedcomment|timestamp|title|sizes|tags|loginfo&rclimit=500&format=json'));
 					let inactive = true;
 					for (change of changes['query']['recentchanges']) {
-						let res = processChange(change);
+						let res = await processChange(change);
 						if (res == null) {}//panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(lastActive)+" | ???</div></div>");
 						else {
 							lastActive = Date.parse(change['timestamp']);
