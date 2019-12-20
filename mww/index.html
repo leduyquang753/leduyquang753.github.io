@@ -125,7 +125,7 @@
 			'link-twitter': 'Twitter',
 			'link-vk': 'VK',
 			'link-xbl': 'XBL'
-		}
+		};
 		
 		const commentActionIconMap = {
 			'comment-created': '',
@@ -133,7 +133,7 @@
 			'comment-edited': '',
 			'comment-purged': '',
 			'comment-replied': ''
-		}
+		};
 		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
 		
@@ -261,7 +261,7 @@
 			return (day > 0 ? day + 'd' : '') + (secs > 3599 && (secs < 86400 || secs%86400 != 0) ? hour + 'h' : '') + (sec == 0 ? (secs > 3599 && min < 10 ? '0' : '') + min + (secs < 3600 ? "'" : '') : secs > 59 && (secs < 3600 || secs%3600 != 0) ? ':' + (sec < 10 ? '0' : '') + sec : secs < 60 ? sec + '"' : '');
 		}
 		
-		function processChange(entry) {
+		async function processChange(entry) {
 			if ('flags' in entry && 'bot' in entry['flags']) return null;
 			comment = entry.parsedcomment == '' ? '<i>(No description provided.)</i>' : entry.parsedcomment;
 			res = new Object();
