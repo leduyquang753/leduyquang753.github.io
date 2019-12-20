@@ -333,7 +333,7 @@
 						case 'curseprofile':
 							if (entry.logaction.startsWith('comment')) {
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>'+commentActionIconMap[entry.logaction]+'</span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
-								res.desc = '<a target="_blank" style="color:black" href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'"><span class=icon></span> '+JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&comment_id='+entry.logparams['4:comment_id'])).text+'</a>';
+								res.desc = '<a target="_blank" style="color:black" href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&comment_id='+entry.logparams['4:comment_id'])).text+'</a>';
 							} else { // profile-edited
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a> ('+profileFieldMap[entry.logparams['4:section']]+')';
 								res.desc = comment;
