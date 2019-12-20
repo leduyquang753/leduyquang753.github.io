@@ -271,7 +271,7 @@
 					break;
 				case 'categorize':
 					res.header = '<span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
-					res.desc = comment;
+					res.desc = comment+'.';
 					break;
 				case 'edit':
 					if ('newlen' in entry && 'oldlen' in entry) {
