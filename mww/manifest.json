@@ -14,8 +14,8 @@
 		}
 	],
 	"start_url": "/mww/index.html",
-	"background_color": "#FFBE72",
-	"theme_color": "#FFBE72",
+	"background_color": "#FFBE7C",
+	"theme_color": "#FFBE7C",
 	"display": "standalone",
 	"prefer_related_applications": false
 }
