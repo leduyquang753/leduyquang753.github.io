@@ -163,12 +163,12 @@
 			if (window.matchMedia('(display-mode: standalone)').matches) {
 				document.getElementById('titleBar').innerHTML = '<div id=siteAddress onclick="changeSite()"><i>(Nothing is being watched.)</i></div>';
 			}
-			if (document.cookie == '') { document.getElementById('messagesPanel').insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div></div><div>There is no site set to be watched. Click the &quot;<i>(Nothing is being watched.)</i>&quot; text to set the site. Later on you can also click the same location to change it.</div></div>"); scroll(); return; } else site = document.cookie;
 			document.getElementById('siteAddress').innerHTML = site;
 			statusElement = document.getElementById('activity');
 			panel = document.getElementById('messagesPanel');
 			checkSound = document.getElementById('checkSound');
 			checkScrollLock = document.getElementById('checkScrollLock');
+			if (document.cookie == '') { document.getElementById('messagesPanel').insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div></div><div>There is no site set to be watched. Click the &quot;<i>(Nothing is being watched.)</i>&quot; text to set the site. Later on you can also click the same location to change it.</div></div>"); scroll(); return; } else site = document.cookie;
 			document.head.insertAdjacentHTML('beforeEnd', '<base href="https://'+site+'" target="_blank">');
 			try {
 				lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
@@ -340,8 +340,8 @@
 							break;
 						case 'curseprofile':
 							if (entry.logaction.startsWith('comment')) {
-								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>'+commentActionIconMap[entry.logaction]+'</span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
-								res.desc = '<a target="_blank" style="color:black" href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+JSON.parse(await loadPage('https://'+site+'/api.php?action=parse&format=json&wrapoutputclass=&text='+encodeURI(JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&comment_id='+entry.logparams['4:comment_id'])).text))).parse.text['*']+'</a>';
+								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <a class=icon target="_blank" href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+commentActionIconMap[entry.logaction]+'</a> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
+								res.desc = JSON.parse(await loadPage('https://'+site+'/api.php?action=parse&format=json&wrapoutputclass=&text='+encodeURI(JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&comment_id='+entry.logparams['4:comment_id'])).text))).parse.text['*'];
 							} else { // profile-edited
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a> ('+profileFieldMap[entry.logparams['4:section']]+')';
 								res.desc = comment;
