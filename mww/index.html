@@ -131,11 +131,11 @@
 		};
 		
 		const commentActionIconMap = {
-			'comment-created': '',
-			'comment-deleted': '',
-			'comment-edited': '',
-			'comment-purged': '',
-			'comment-replied': ''
+			'comment-created': '<span title="Write new comment"></span>',
+			'comment-deleted': '<span title="Delete comment"></span>',
+			'comment-edited': '<span title="Edit comment"></span>',
+			'comment-purged': '<span title="Purge comment"></span>',
+			'comment-replied': '<span title="Reply to another comment"></span>'
 		};
 		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
@@ -161,7 +161,7 @@
 		
 		async function initialize() {
 			if (window.matchMedia('(display-mode: standalone)').matches) {
-				document.getElementById('titleBar').innerHTML = '<div id=siteAddress onclick="changeSite()"><i>(Nothing is being watched.)</i></div>';
+				document.getElementById('titleBar').innerHTML = '<div id=siteAddress title="Click to set the site to watch." onclick="changeSite()"><i>(Nothing is being watched.)</i></div>';
 			}
 			statusElement = document.getElementById('activity');
 			panel = document.getElementById('messagesPanel');
@@ -174,7 +174,7 @@
 			try {
 				lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
 				updateInactiveTime();
-				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div><div class=buttonIcon><a target='_blank' target='_blank' href='/Special:RecentChanges' target=_blank></a></div></div><div>Started watching.</div></div>");
+				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div><div class=buttonIcon><a target='_blank' href='/Special:RecentChanges' title='View recent changes on the site itself.'></a></div></div><div>Started watching.</div></div>");
 				
 				while (true) {
 					await sleep();
@@ -285,24 +285,24 @@
 				case 'edit':
 					if ('newlen' in entry && 'oldlen' in entry) {
 						sizechange = entry.newlen-entry.oldlen;
-						let icon = '', userIcons = '';
+						let icon = '<span title="Edit"></span>', userIcons = '';
 						if (entry.tags.includes('mw-undo')) {
 							entry.tags.del('mw-undo');
-							icon = '';
+							icon = '<span title="Undo"></span>';
 						} else if (entry.tags.includes('mw-rollback')) {
 							entry.tags.del('mw-rollback');
-							icon = '';
+							icon = '<span title="Rollback"></span>';
 						}
 						if (entry.tags.includes('visualeditor')) {
 							entry.tags.del('visualeditor');
-							userIcons += '';
+							userIcons += '<span title="Visual editor"></span>';
 						} else if (entry.tags.includes('visualeditor-switched')) {
 							entry.tags.del('visualeditor-switched');
-							userIcons += '';
+							userIcons += '<span title="Visual editor"></span>';
 						}
 						if (entry.tags.includes('mobile edit')) {
 							entry.tags.del('mobile edit');
-							userIcons += '';
+							userIcons += '<span title="Mobile"></span>';
 						}
 						if (entry.tags.includes('mobile web edit')) {
 							entry.tags.del('mobile web edit');
@@ -310,7 +310,7 @@
 						res.header = (userIcons == '' ? '' : '<span class=icon>'+userIcons+'</span> ')+'<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>'+icon+'</span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<a target="_blank" class="'+getChangeFormatting(sizechange)+'" href="/index.php?diff='+change.revid+'&oldid='+change.old_revid+'"/>'+(sizechange > 0 ? '+' : sizechange == 0 ? '' : '–')+(''+sizechange).replace('-','')+'</a>'+('minor' in entry ? ', minor' : '')+')';
 						res.desc = comment;
 					} else {
-						res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
+						res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Edit"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
 						res.desc = comment;
 					} break;
 				case 'log':
@@ -325,21 +325,21 @@
 								}
 								res.flags = fl;
 							}
-							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" class=diffRemove href="/'+entry.title+'">'+entry.title.substr(5)+'</a>';
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Block"></span> <a target="_blank" class=diffRemove href="/'+entry.title+'">'+entry.title.substr(5)+'</a>';
 							res.duration = 'expiry' in entry.logparams ? formatDuration(Math.floor((Date.parse(entry.logparams.expiry)-Date.parse(entry.timestamp))/1000)) : '∞';
 							if ('expiry' in entry.logparams) res.expiry = formatDateTime(entry.logparams.expiry);
 							res.desc = comment;
 							break;
 						case 'upload':
-							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>'+(entry.logaction == 'overwrite' ? '' : '✳')+'</span> <a target="_blank"'+(entry.logaction == 'overwrite' ? '' : 'class=diffAdd')+' href="/'+formatPageName(entry.title)+'">'+entry.title.substr(5)+'</a>';
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Upload">'+(entry.logaction == 'overwrite' ? '' : '<span title="New file">✳</span>')+'</span> <a target="_blank"'+(entry.logaction == 'overwrite' ? '' : 'class=diffAdd')+' href="/'+formatPageName(entry.title)+'">'+entry.title.substr(5)+'</a>';
 							res.desc = comment;
 							break;
 						case 'move':
-							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> '+entry.title+' → <a target="_blank" href="/'+formatPageName(entry.logparams.target_title)+'">'+entry.logparams.target_title+'</a>';
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Move"></span> '+entry.title+' → <a target="_blank" href="/'+formatPageName(entry.logparams.target_title)+'">'+entry.logparams.target_title+'</a>';
 							res.desc = comment;
 							break;
 						case 'delete':
-							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" class=diffRemove href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Delete"></span> <a target="_blank" class=diffRemove href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
 							res.desc = comment;
 							break;
 						case 'curseprofile':
@@ -347,7 +347,7 @@
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <a class=icon target="_blank" href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+commentActionIconMap[entry.logaction]+'</a> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
 								res.desc = JSON.parse(await loadPage('https://'+site+'/api.php?action=parse&format=json&wrapoutputclass=&text='+encodeURI(JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&comment_id='+entry.logparams['4:comment_id'])).text))).parse.text['*'];
 							} else { // profile-edited
-								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a> ('+profileFieldMap[entry.logparams['4:section']]+')';
+								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Edit profile field"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a> ('+profileFieldMap[entry.logparams['4:section']]+')';
 								res.desc = comment;
 							}
 							break;
@@ -365,17 +365,17 @@
 			if (type == 'protect') {
 				switch (logEvent.action) {
 					case 'protect':
-						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon title="Protect"></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
 						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
 						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
 						return true;
 					case 'unprotect':
-						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon title="Unprotect"></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
 						return true;
 					case 'modify':
-						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
+						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon title="Edit protection"></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
 						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
 						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
@@ -388,18 +388,18 @@
 	<body onLoad='initialize()'>
 		<div id=titleBar>
 			<div id=appName><b>MediaWiki watchdog</b></div>
-			<div id=siteAddress onclick='changeSite()'><i>(Nothing is being watched.)</i></div>
+			<div id=siteAddress title='Click to set the site to watch.' onclick='changeSite()'><i>(Nothing is being watched.)</i></div>
 		</div>
 		<div id=messagesPanel>
 		</div>
 		<div id=statusBar>
 			<div id=statusLeft>
-				<div class=statusLeftAligned id=activity>Not watching.</div>
+				<div class=statusLeftAligned id=activity>Not watching</div>
 			</div>
 			<div id=statusRight>
-				<div><label style='user-select: none'><input id=checkSound type=checkbox checked>Sound notifications</label> | </div>
-				<div><label style='user-select: none'><input id=checkScrollLock type=checkbox>Scroll lock</label> | </div>
-				<div class=button id=buttonClear onclick="document.getElementById('messagesPanel').innerHTML = ''">Clear</div>
+				<div><label title='When a change is made, the app will play a sound to notify.' style='user-select: none'><input id=checkSound type=checkbox checked>Sound notifications</label> | </div>
+				<div><label title="When a change is made, the app won't automatically scroll the messages panel to the bottom." style='user-select: none'><input id=checkScrollLock type=checkbox>Scroll lock</label> | </div>
+				<div class=button title='Clear the mesages panel.' id=buttonClear onclick="document.getElementById('messagesPanel').innerHTML = ''">Clear</div>
 			</div>
 		</div>
 	</body>
