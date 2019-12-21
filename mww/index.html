@@ -163,12 +163,13 @@
 			if (window.matchMedia('(display-mode: standalone)').matches) {
 				document.getElementById('titleBar').innerHTML = '<div id=siteAddress onclick="changeSite()"><i>(Nothing is being watched.)</i></div>';
 			}
-			document.getElementById('siteAddress').innerHTML = site;
 			statusElement = document.getElementById('activity');
 			panel = document.getElementById('messagesPanel');
 			checkSound = document.getElementById('checkSound');
 			checkScrollLock = document.getElementById('checkScrollLock');
-			if (document.cookie == '') { document.getElementById('messagesPanel').insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div></div><div>There is no site set to be watched. Click the &quot;<i>(Nothing is being watched.)</i>&quot; text to set the site. Later on you can also click the same location to change it.</div></div>"); scroll(); return; } else site = document.cookie;
+			if (document.cookie == '') { document.getElementById('messagesPanel').insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div></div><div>There is no site set to be watched. Click the &quot;<i>(Nothing is being watched.)</i>&quot; text to set the site. Later on you can also click the same location to change it.</div></div>"); scroll(); return; }
+			site = document.cookie;
+			document.getElementById('siteAddress').innerHTML = site;
 			document.head.insertAdjacentHTML('beforeEnd', '<base href="https://'+site+'" target="_blank">');
 			try {
 				lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
