@@ -138,6 +138,15 @@
 			'comment-replied': '<span title="Reply to another comment"></span>'
 		};
 		
+		const blockFlags = {
+			'anononly': 'anonymous only',
+			'nocreate': 'account creation disabled',
+			'noautoblock': 'no auto block',
+			'noemail': 'email disabled',
+			'nousertalk': 'no user talk',
+			'hiddenname': 'name hidden'
+		};
+		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
 		
 		Array.prototype.del = function(toDel) {
@@ -251,6 +260,11 @@
 			return new Promise(resolve => setTimeout(resolve, 30000));
 		}
 		
+		function getBlockFlag(flag) {
+			let str = blockFlags[flag];
+			return str == undefined ? flag : str;
+		}
+		
 		function getChangeFormatting(amount) {
 			if (amount == 0) return 'diffChange';
 			else return (amount > 0 ? 'diffAdd' : 'diffRemove')
@@ -320,11 +334,11 @@
 							if ('flags' in entry.logparams) {
 								let fl = '';
 								let second = false;
-								for (stri in entry.logparams.flags) {
-									fl += (second ? ', ' : '') + stri;
+								for (stri of entry.logparams.flags) {
+									fl += (second ? ', ' : '') + getBlockFlag(stri);
 									second = true;
 								}
-								res.flags = fl;
+								res.flags = fl == '' ? fl : fl.charAt(0).toUpperCase()+fl.substr(1);
 							}
 							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Block"></span> <a target="_blank" class=diffRemove href="/'+entry.title+'">'+entry.title.substr(5)+'</a>';
 							res.duration = 'expiry' in entry.logparams ? formatDuration(Math.floor((Date.parse(entry.logparams.expiry)-Date.parse(entry.timestamp))/1000)) : '∞';
