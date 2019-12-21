@@ -167,6 +167,7 @@
 			panel = document.getElementById('messagesPanel');
 			checkSound = document.getElementById('checkSound');
 			checkScrollLock = document.getElementById('checkScrollLock');
+			notifSound.load();
 			if (document.cookie == '') { document.getElementById('messagesPanel').insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div></div><div>There is no site set to be watched. Click the &quot;<i>(Nothing is being watched.)</i>&quot; text to set the site. Later on you can also click the same location to change it.</div></div>"); scroll(); return; }
 			site = document.cookie;
 			document.getElementById('siteAddress').innerHTML = site;
@@ -266,7 +267,7 @@
 			hour = Math.floor(secs%86400/3600);
 			day = Math.floor(secs/86400);
 			
-			return (day > 0 ? day + 'd' : '') + (secs > 3599 && (secs < 86400 || secs%86400 != 0) ? hour + 'h' : '') + (sec == 0 ? (secs > 3599 && min < 10 ? '0' : '') + min + (secs < 3600 ? "'" : '') : secs > 59 && (secs < 3600 || secs%3600 != 0) ? ':' + (sec < 10 ? '0' : '') + sec : secs < 60 ? sec + '"' : '');
+			return (day > 0 ? day + 'd' : '') + (secs > 3599 && (secs < 86400 || secs%86400 != 0) ? hour + 'h' : '') + (secs > 59 && (secs < 3600 || secs%3600 != 0) ? (secs > 3599 && min < 10 ? '0' : '') + min + (sec == 0 ? (secs < 3600 ? "'" : '') : (sec < 10 ? '0' : '') + sec) : secs < 60 ? sec + "'" : '');
 		}
 		
 		async function processChange(entry) {
