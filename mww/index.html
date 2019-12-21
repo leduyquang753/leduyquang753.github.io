@@ -163,7 +163,7 @@
 			if (window.matchMedia('(display-mode: standalone)').matches) {
 				document.getElementById('titleBar').innerHTML = '<div id=siteAddress onclick="changeSite()"><i>(Nothing is being watched.)</i></div>';
 			}
-			if (document.cookie == '') { document.getElementById('messagesPanel').insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div></div><div>There is no site set to be watched. Click the &quot;<i>(Nothing is being watched.)</i>&quot; text to set the site. Later on you can also click the same location to change it.</div></div>"); return; } else site = document.cookie;
+			if (document.cookie == '') { document.getElementById('messagesPanel').insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div></div><div>There is no site set to be watched. Click the &quot;<i>(Nothing is being watched.)</i>&quot; text to set the site. Later on you can also click the same location to change it.</div></div>"); scroll(); return; } else site = document.cookie;
 			document.getElementById('siteAddress').innerHTML = site;
 			statusElement = document.getElementById('activity');
 			panel = document.getElementById('messagesPanel');
@@ -206,7 +206,7 @@
 							}
 							html += '</div>';
 							panel.insertAdjacentHTML('beforeEnd', html);
-							if (!checkScrollLock.checked) panel.scrollTop = panel.scrollHeight;
+							scroll();
 							inactive = false;
 						}
 					}
@@ -217,7 +217,12 @@
 				panel.style.backgroundColor = '#EE9797';
 				console.error(error);
 				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+" | <b>ERROR</b></div></div><div>An error occured while running the app:<br><i>"+error.toString()+"</i><br>Please check the console for details of what happened. When the problem has been fixed (if there is any chance), please reload the app page.</div></div>");
+				scroll();
 			}
+		}
+		
+		function scroll() {
+			if (!checkScrollLock.checked) panel.scrollTop = panel.scrollHeight;
 		}
 		
 		function formatDateTime(dateTimeIn) {
@@ -311,7 +316,7 @@
 								let fl = '';
 								let second = false;
 								for (stri in entry.logparams.flags) {
-									fi += (second ? ', ' : '') + stri;
+									fl += (second ? ', ' : '') + stri;
 									second = true;
 								}
 								res.flags = fl;
