@@ -194,7 +194,7 @@
 							if ('flags' in res) html += '<div><span class=icon></span> ' + res.flags + '</div>';
 							if ('duration' in res) html += '<div><span class=icon></span> ' + res.duration + '</div>';
 							if ('expiry' in res) html += '<div><span class=icon></span> ' + res.expiry + '</div>';
-							html += '<div>' + res.desc + '</div>';
+							html += '<div>' + res.desc.replace(/&lrm;/, ' ') + '</div>';
 							change.tags.del('move'); change.tags.del('delete');
 							if (change.tags.length > 0) {
 								let notFirst = false;
@@ -275,11 +275,11 @@
 			let res = new Object();
 			switch (entry.type) {
 				case 'new':
-					res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>✳</span> <a target="_blank" class=diffAdd href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<span class="'+getChangeFormatting(entry.newlen)+'">'+entry.newlen+'</span>)';
+					res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="New page">✳</span> <a target="_blank" class=diffAdd href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<span class="'+getChangeFormatting(entry.newlen)+'">'+entry.newlen+'</span>)';
 					res.desc = comment;
 					break;
 				case 'categorize':
-					res.header = '<span class=icon></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
+					res.header = '<span class=icon title="Categorize"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
 					res.desc = comment+'.';
 					break;
 				case 'edit':
