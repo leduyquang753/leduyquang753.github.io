@@ -296,6 +296,9 @@
 						if (entry.tags.includes('visualeditor')) {
 							entry.tags.del('visualeditor');
 							userIcons += '';
+						} else if (entry.tags.includes('visualeditor-switched')) {
+							entry.tags.del('visualeditor-switched');
+							userIcons += '';
 						}
 						if (entry.tags.includes('mobile edit')) {
 							entry.tags.del('mobile edit');
