@@ -197,6 +197,7 @@
 				lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
 				updateInactiveTime();
 				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div><div class=buttonIcon><a target='_blank' href='/Special:RecentChanges' title='View recent changes on the site itself.'></a></div></div><div>Started watching.</div></div>");
+				scroll();
 				
 				while (true) {
 					await sleep();
