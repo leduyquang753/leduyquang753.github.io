@@ -65,6 +65,15 @@
 		.messageBarLeft {
 			flex-grow: 1;
 		}
+		.marker {
+			background-color: #777;
+			height: 5px;
+			margin-top: 10px;
+			cursor: pointer;
+		}
+		.marker:hover {
+			background-color: #444;
+		}
 		.diffAdd {
 			color: #0A0;
 		}
@@ -110,6 +119,7 @@
 		//const timezone = +7;
 		var lastActive = 0;
 		var statusElement;
+		var markerElement = null;
 		const notifSound = new Audio('https://leduyquang753.github.io/mww/New_change.wav');
 		var panel;
 		var checkSound;
@@ -229,7 +239,10 @@
 			} catch (error) {
 				panel.style.backgroundColor = '#EE9797';
 				console.error(error);
-				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+" | <b>ERROR</b></div></div><div>An error occured while running the app:<br><i>"+error.toString()+"</i><br>Please check the console for details of what happened. When the problem has been fixed (if there is any chance), please reload the app page.</div></div>");
+				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())
+										+" | <b>ERROR</b></div></div><div>An error occured while running the app:<br><i>"+error.toString()
+										+"</i><br>Please check the console for details of what happened. When the problem has been fixed (if there is any chance),"
+										+" <span class=button onclick='panel.style.backgroundColor = null; initialize();'>rerun the app</span> or <span class=button onclick='location.reload()'>reload the app page</span>.</div></div>");
 				scroll();
 			}
 		}
@@ -401,6 +414,20 @@
 			}
 			return false;
 		}
+		
+		function removeMarker() {
+			if (markerElement != null) panel.removeChild(markerElement);
+			markerElement = null;
+		}
+		
+		function addMarker() {
+			removeMarker();
+			markerElement = document.createElement('div');
+			markerElement.className = 'marker';
+			markerElement.onclick = function() { removeMarker(); };
+			markerElement.title = 'Click to remove this marker.';
+			panel.appendChild(markerElement);
+		}
 	</script>
 	<body onLoad='initialize()'>
 		<div id=titleBar>
@@ -416,6 +443,7 @@
 			<div id=statusRight>
 				<div><label title='When a change is made, the app will play a sound to notify.' style='user-select: none'><input id=checkSound type=checkbox checked>Sound notifications</label> | </div>
 				<div><label title="When a change is made, the app won't automatically scroll the messages panel to the bottom." style='user-select: none'><input id=checkScrollLock type=checkbox>Scroll lock</label> | </div>
+				<div class=button title='Place a marker at the end of the messages panel to track changes.' id=buttonPlaceMarker onclick="addMarker()">Place marker</div><span style='white-space: pre;'> | </span>
 				<div class=button title='Clear the mesages panel.' id=buttonClear onclick="document.getElementById('messagesPanel').innerHTML = ''">Clear</div>
 			</div>
 		</div>
