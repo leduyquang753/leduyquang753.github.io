@@ -376,7 +376,8 @@
 						case 'curseprofile':
 							if (entry.logaction.startsWith('comment')) {
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <a class=icon target="_blank" href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+commentActionIconMap[entry.logaction]+'</a> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
-								res.desc = JSON.parse(await loadPage('https://'+site+'/api.php?action=parse&format=json&wrapoutputclass=&text='+encodeURI(JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&comment_id='+entry.logparams['4:comment_id'])).text))).parse.text['*'];
+								if (entry.logaction != 'comment-deleted')
+									res.desc = JSON.parse(await loadPage('https://'+site+'/api.php?action=parse&format=json&wrapoutputclass=&text='+encodeURI(JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&comment_id='+entry.logparams['4:comment_id'])).text))).parse.text['*'];
 							} else { // profile-edited
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Edit profile field"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a> ('+profileFieldMap[entry.logparams['4:section']]+')';
 								res.desc = comment;
