@@ -301,7 +301,7 @@
 			hour = Math.floor(secs%86400/3600);
 			day = Math.floor(secs/86400);
 			
-			return (day > 0 ? day + 'd' : '') + (secs > 3599 && (secs < 86400 || secs%86400 != 0) ? hour + 'h' : '') + (secs > 59 && (secs < 3600 || secs%3600 != 0) ? (secs > 3599 && min < 10 ? '0' : '') + min + (sec == 0 ? (secs < 3600 ? "'" : '') : (sec < 10 ? '0' : '') + sec) : secs < 60 ? sec + "'" : '');
+			return (day > 0 ? day + 'd' : '') + (secs > 3599 && (secs < 86400 || secs%86400 != 0) ? hour + 'h' : '') + (secs > 59 && (secs < 3600 || secs%3600 != 0) ? (secs > 3599 && min < 10 ? '0' : '') + min + (sec == 0 ? (secs < 3600 ? "'" : '') : (sec < 10 ? ':0' : ':') + sec) : secs < 60 ? sec + "\"" : '');
 		}
 		
 		async function processChange(entry) {
