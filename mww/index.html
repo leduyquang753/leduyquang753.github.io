@@ -162,6 +162,23 @@
 			'hiddenname': 'name hidden'
 		};
 		
+		const tagMap = {
+			'mw-new-redirect': 'New redirect',
+			'mw-changed-redirect-target': 'Changed redirect target',
+			'deletiontemplate-addition': 'Deletion proposed',
+			'added youtube video': 'Added YouTube video',
+			'spriteeditor': 'Edited with sprite editor',
+			'mw-replace': '90%+ changed',
+			'mw-removed-redirect': 'Redirect removed',
+			'section blanking': 'Section wiped',
+			'mw-blank': 'Page wiped'
+		};
+		
+		function getTagString(tag) {
+			let res = tagMap[tag];
+			return res == undefined ? tag : res;
+		}
+		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
 		
 		Array.prototype.del = function(toDel) {
@@ -226,7 +243,7 @@
 								let notFirst = false;
 								let tagText = '';
 								for (tag of change.tags) {
-									tagText += (notFirst ? ', ' : '') + tag;
+									tagText += (notFirst ? ', ' : '') + getTagString(tag);
 									notFirst = true;
 								}
 								html += '<div><span class=icon></span> ' + tagText + '</div>';
