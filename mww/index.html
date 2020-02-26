@@ -188,7 +188,6 @@
 		}
 		
 		async function loadPage(url) {
-			let res = '';
 			return await fetch('https://cors-anywhere.herokuapp.com/'+url).then(response => response.text());
 		}
 		
