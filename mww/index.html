@@ -390,7 +390,15 @@
 							res.desc = comment;
 							break;
 						case 'delete':
-							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Delete"></span> <a target="_blank" class=diffRemove href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
+							if (entry.logaction == "revision") {
+								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Delete revisions"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (';
+								let isNotFirst = false;
+								for (id of entry.logparams.ids) {
+									if (isNotFirst) res.header += ', '; else isNotFirst = true;
+									res.header == id;
+								}
+								res.header += ')'
+							} else res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Delete"></span> <a target="_blank" class=diffRemove href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
 							res.desc = comment;
 							break;
 						case 'curseprofile':
