@@ -394,7 +394,7 @@
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Delete revisions"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (';
 								let isNotFirst = false;
 								for (id of entry.logparams.ids) {
-									if (isNotFirst) res.header += ', '; else isNotFirst = true;
+									if (isNotFirst) res.header += '; '; else isNotFirst = true;
 									res.header == id;
 								}
 								res.header += ')'
