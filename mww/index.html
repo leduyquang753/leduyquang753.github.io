@@ -420,7 +420,7 @@
 		}
 			
 		async function processLogEvent(res, timestamp) {
-			let logEvent = JSON.parse(await loadPage("https://"+site+"/api.php?action=query&list=logevents&lestart="+timestamp+"&leend="+timestamp+"&format=json&lelimit=5")).logevents[0];
+			let logEvent = JSON.parse(await loadPage("https://"+site+"/api.php?action=query&list=logevents&lestart="+timestamp+"&leend="+timestamp+"&format=json&lelimit=5")).query.logevents[0];
 			let comment = logEvent.comment == '' ? '<i>(No description provided.)</i>' : logEvent.comment;
 			if (type == 'protect') {
 				switch (logEvent.action) {
