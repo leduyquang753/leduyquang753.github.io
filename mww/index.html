@@ -427,8 +427,8 @@
 					case 'protect':
 						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon title="Protect"></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
-						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
-						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
+						res.duration = logEvent.params.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.params.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
+						if (logEvent.params.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.params.details[0].expiry);
 						return true;
 					case 'unprotect':
 						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon title="Unprotect"></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
@@ -437,8 +437,8 @@
 					case 'modify':
 						res.header = '<a target="_blank" href="/User:'+logEvent.user+'">'+logEvent.user+'</a> <span class=icon title="Edit protection"></span> <a target="_blank" class=diffAdd href="/'+formatPageName(logEvent.title)+'">'+logEvent.title+'</a>';
 						res.desc = comment;
-						res.duration = logEvent.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
-						if (logEvent.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.details[0].expiry);
+						res.duration = logEvent.params.details[0].expiry != 'infinite' ? formatDuration(Math.floor((Date.parse(logEvent.params.details[0].expiry)-Date.parse(logEvent.timestamp))/1000)) : '∞';
+						if (logEvent.params.details[0].expiry != 'infinite') res.expiry = formatDateTime(logEvent.params.details[0].expiry);
 						return true;
 				}
 			}
