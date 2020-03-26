@@ -55,16 +55,14 @@
 			background-color: rgba(255, 255, 255, 0.75);
 			margin-top: 10px;
 			border-radius: 5px;
-            border-width: 3px;
-            border-style: solid;
-            border-color: rgba(0, 0, 0, 0);
+			border-width: 3px;
+			border-style: solid;
+			border-color: rgba(0, 0, 0, 0);
 			left: 0px;
 			right: 0px;
 			user-select: auto;
-            padding: 2px;
-            animation-name: newMessage;
-            animation-duration: 5s;
-            animation-timing-function: cubic-bezier(0.75, 0, 0.65, 0.2);
+			padding: 2px;
+			animation: newMessageAppear 0.5s linear, newMessageHighlight 5s cubic-bezier(0.75, 0, 0.65, 0.2);
 		}
 		.messageBar {
 			display: flex;
@@ -123,10 +121,13 @@
 		#statusBar div * {
 			display: inline-block;
 		}
-        @keyframes newMessage {
-            from { border-color: rgba(255, 190, 124, 0.75) }
-            to { border-color: rgba(0, 0, 0, 0) }
-        }
+		@keyframes newMessageHighlight {
+			from { border-color: rgba(255, 190, 124, 0.75) }
+			to { border-color: rgba(0, 0, 0, 0) }
+		}
+		@keyframes newMessageAppear {
+			from { opacity: 0 }
+			to { opacity: 1 }
 	</style>
 	<script>
 		var site = 'minecraft.gamepedia.com';
