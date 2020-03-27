@@ -62,7 +62,7 @@
 			right: 0px;
 			user-select: auto;
 			padding: 2px;
-			animation: newMessageAppear 0.5s linear, newMessageHighlight 5s cubic-bezier(0.75, 0, 0.65, 0.2);
+			animation: newMessageAppear 0.5s linear, newMessageHighlight 6.5s linear;
 		}
 		.messageBar {
 			display: flex;
@@ -122,8 +122,8 @@
 			display: inline-block;
 		}
 		@keyframes newMessageHighlight {
-			from { border-color: rgba(255, 190, 124, 0.75) }
-			to { border-color: rgba(0, 0, 0, 0) }
+			0%, 84.62% { border-color: rgba(255, 190, 124, 0.75) }
+			100% { border-color: rgba(0, 0, 0, 0) }
 		}
 		@keyframes newMessageAppear {
 			from { opacity: 0 }
@@ -338,7 +338,22 @@
 			let res = new Object();
 			switch (entry.type) {
 				case 'new':
-					res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="New page">✳</span> <a target="_blank" class=diffAdd href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<span class="'+getChangeFormatting(entry.newlen)+'">'+entry.newlen+'</span>)';
+					userIcons = '';
+					if (entry.tags.includes('visualeditor')) {
+						entry.tags.del('visualeditor');
+						userIcons += '<span title="Visual editor"></span>';
+					} else if (entry.tags.includes('visualeditor-switched')) {
+						entry.tags.del('visualeditor-switched');
+						userIcons += '<span title="Visual editor"></span>';
+					}
+					if (entry.tags.includes('mobile edit')) {
+						entry.tags.del('mobile edit');
+						userIcons += '<span title="Mobile"></span>';
+					}
+					if (entry.tags.includes('mobile web edit')) {
+						entry.tags.del('mobile web edit');
+					}
+					res.header = (userIcons == '' ? '' : '<span class=icon>'+userIcons+'</span> ')+'<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="New page">✳</span> <a target="_blank" class=diffAdd href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<span class="'+getChangeFormatting(entry.newlen)+'">'+entry.newlen+'</span>)';
 					res.desc = comment;
 					break;
 				case 'categorize':
@@ -394,7 +409,19 @@
 							res.desc = comment;
 							break;
 						case 'upload':
-							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Upload">'+(entry.logaction == 'overwrite' ? '' : '<span title="New file">✳</span>')+'</span> <a target="_blank"'+(entry.logaction == 'overwrite' ? '' : 'class=diffAdd')+' href="/'+formatPageName(entry.title)+'">'+entry.title.substr(5)+'</a>';
+							icon = '?';
+							switch (entry.logaction) {
+								case 'upload':
+									icon = '<span class=icon title="Upload new file">✳</span>';
+									break;
+								case 'overwrite':
+									icon = '<span class=icon title="Upload"></span>';
+									break;
+								case 'revert':
+									icon = '<span class=icon title="Revert"></span>';
+									break;
+							}
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> ' + icon + ' <a target="_blank"'+(entry.logaction == 'upload' ? 'class=diffAdd' : '')+' href="/'+formatPageName(entry.title)+'">'+entry.title.substr(5)+'</a>';
 							res.desc = comment;
 							break;
 						case 'move':
