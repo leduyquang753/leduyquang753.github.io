@@ -193,7 +193,7 @@
 		const protectionLevelMap = {
 			'autoconfirmed': 'Autoconfirmed',
 			'directoreditprotected': 'Directors',
-			'sysop': 'System operators'
+			'sysop': 'Administrators'
 		};
 		
 		if ('serviceWorker' in navigator) navigator.serviceWorker.register('https://leduyquang753.github.io/mww/serviceWorker.js');
@@ -258,6 +258,7 @@
 							if ('flags' in res) html += '<div><span class=icon></span> ' + res.flags + '</div>';
 							if ('duration' in res) html += '<div><span class=icon></span> ' + res.duration + '</div>';
 							if ('expiry' in res) html += '<div><span class=icon></span> ' + res.expiry + '</div>';
+							if ('details' in res) html += res.details;
 							if (res.desc) html += '<div>' + res.desc.replace(/&lrm;/, ' ') + '</div>';
 							change.tags.del('move'); change.tags.del('delete');
 							if (change.tags.length > 0) {
