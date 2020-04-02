@@ -469,7 +469,7 @@
 									res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Protect"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
 									res.desc = comment;
 									res.details = '';
-									for (detail in entry.logparams.details) res.details += formatProtectionEntry(detail, entry.timestamp);
+									for (detail of entry.logparams.details) res.details += formatProtectionEntry(detail, entry.timestamp);
 									break;
 								case 'unprotect':
 									res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Unprotect"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
@@ -479,7 +479,7 @@
 									res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Edit protection"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a>';
 									res.desc = comment;
 									res.details = '';
-									for (detail in entry.logparams.details) res.details += formatProtectionEntry(detail, entry.timestamp);
+									for (detail of entry.logparams.details) res.details += formatProtectionEntry(detail, entry.timestamp);
 									break;
 								default: return null;
 							}
