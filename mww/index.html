@@ -438,7 +438,7 @@
 									icon = '<span class=icon title="Revert"></span>';
 									break;
 							}
-							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> ' + icon + ' <a target="_blank"'+(entry.logaction == 'upload' ? 'class=diffAdd' : '')+' href="/'+formatPageName(entry.title)+'">'+entry.title.substr(5)+'</a>';
+							res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> ' + icon + ' <a target="_blank"'+(entry.logaction == 'upload' ? 'class=diffAdd' : '')+' href="/'+formatPageName(entry.title)+'">'+(entry.logaction=='revert' ? entry.title : entry.title.substr(5))+'</a>';
 							res.desc = comment;
 							break;
 						case 'move':
