@@ -82,7 +82,7 @@ self.addEventListener('install', function (event) {
 		'Tetreml-sandbox.js',
 		'Tetriminos.js',
 		'Utils.js'
-	]).except((error) => { console.log(error); }) }));
+	]).catch((error) => { console.error(error); }) }));
 });
 
 self.addEventListener('activate', function (event) {
