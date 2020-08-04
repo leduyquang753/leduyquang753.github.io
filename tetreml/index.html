@@ -185,73 +185,8 @@
 
 		<h4>Garbage</h4>
 		<p>If a player clears lines, makes a combo or other things, they can send <i>garbage lines</i> to the opponent which push stuff in the opponent's Tetrion upwards. Each Tetrion has a gauge displaying garbage the opponent has sent waiting to be deployed. When they appear, don't be panic yet, there is a delay before they actually get inside the Tetrion, and you can do the same as attacking to negate them.</p>
-
-		<h3>Controls customization</h3>
-		<p>If you don't want the default controls (ADSW TY Space), you can open the file <i>Controls.js</i> in a text editor app (<i>Notepad</i> is one built-in) and change them according to the instructions there.</p>
-
-		<p>Below is the currently configured controls for your convenience of viewing:</p>
-
-		<span>
-			<style>
-				:scope ul {
-					margin: 0px;
-				}
-			</style>
-			<span id=controlsList></span>
-		</span>
-
-		<script src="Controls.js"></script>
-		<script src="Utils.js"></script>
-		<script defer>
-			document.getElementById("controlsList").innerHTML =
-				"<details><summary>Singleplayer</summary><ul>" +
-					`<li>Move left: ${formatKeycode(singleplayerControlsMapping.left)}</li>` +
-					`<li>Move right: ${formatKeycode(singleplayerControlsMapping.right)}</li>` +
-					`<li>Rotate counterclockwise: ${formatKeycode(singleplayerControlsMapping.rotateCounterClockwise)}</li>` +
-					`<li>Rotate clockwise: ${formatKeycode(singleplayerControlsMapping.rotateClockwise)}</li>` +
-					`<li>Soft drop: ${formatKeycode(singleplayerControlsMapping.softDrop)}</li>` +
-					`<li>Hard drop: ${formatKeycode(singleplayerControlsMapping.hardDrop)}</li>` +
-					`<li>Hold: ${formatKeycode(singleplayerControlsMapping.hold)}</li>` +
-					`<li>Reset current tetrimino (sandbox only): ${formatKeycode(singleplayerControlsMapping.reset)}</li>` +
-					`<li>Pause/Resume: ${formatKeycode(singleplayerControlsMapping.esc)}</li>` +
-					`<li>Quit modifier (hold and press <i>Pause</i> to quit current game): ${formatKeycode(singleplayerControlsMapping.quitModifier)}</li>` +
-					`<li>Decrease volume: ${formatKeycode(singleplayerControlsMapping.volumeDown)}</li>` +
-					`<li>Increase volume: ${formatKeycode(singleplayerControlsMapping.volumeUp)}</li>` +
-
-				"</ul></details><details><summary>Two-player</summary>" +
-					"<details><summary>General</summary><ul>" +
-						`<li>Pause/Resume: ${formatKeycode(twoPlayerControlsMappingPlayer1.esc)}</li>` +
-						`<li>Quit modifier (hold and press <i>Pause</i> to quit current game): ${formatKeycode(twoPlayerControlsMappingPlayer1.quitModifier)}</li>` +
-						`<li>Decrease volume: ${formatKeycode(twoPlayerControlsMappingPlayer1.volumeDown)}</li>` +
-						`<li>Increase volume: ${formatKeycode(twoPlayerControlsMappingPlayer1.volumeUp)}</li>` +
-					"</ul></details><details><summary>Player 1</summary><ul>" +
-						`<li>Move left: ${formatKeycode(twoPlayerControlsMappingPlayer1.left)}</li>` +
-						`<li>Move right: ${formatKeycode(twoPlayerControlsMappingPlayer1.right)}</li>` +
-						`<li>Rotate counterclockwise: ${formatKeycode(twoPlayerControlsMappingPlayer1.rotateCounterClockwise)}</li>` +
-						`<li>Rotate clockwise: ${formatKeycode(twoPlayerControlsMappingPlayer1.rotateClockwise)}</li>` +
-						`<li>Soft drop: ${formatKeycode(twoPlayerControlsMappingPlayer1.softDrop)}</li>` +
-						`<li>Hard drop: ${formatKeycode(twoPlayerControlsMappingPlayer1.hardDrop)}</li>` +
-						`<li>Hold: ${formatKeycode(twoPlayerControlsMappingPlayer1.hold)}</li>` +
-					"</ul></details><details><summary>Player 2</summary>" +
-						"<details><summary>With numpad</summary><ul>" +
-							`<li>Move left: ${formatKeycode(twoPlayerControlsMappingPlayer2WithNumpad.left)}</li>` +
-							`<li>Move right: ${formatKeycode(twoPlayerControlsMappingPlayer2WithNumpad.right)}</li>` +
-							`<li>Rotate counterclockwise: ${formatKeycode(twoPlayerControlsMappingPlayer2WithNumpad.rotateCounterClockwise)}</li>` +
-							`<li>Rotate clockwise: ${formatKeycode(twoPlayerControlsMappingPlayer2WithNumpad.rotateClockwise)}</li>` +
-							`<li>Soft drop: ${formatKeycode(twoPlayerControlsMappingPlayer2WithNumpad.softDrop)}</li>` +
-							`<li>Hard drop: ${formatKeycode(twoPlayerControlsMappingPlayer2WithNumpad.hardDrop)}</li>` +
-							`<li>Hold: ${formatKeycode(twoPlayerControlsMappingPlayer2WithNumpad.hold)}</li>` +
-						"</ul></details><details><summary>Without numpad</summary><ul>" +
-							`<li>Move left: ${formatKeycode(twoPlayerControlsMappingPlayer2WithoutNumpad.left)}</li>` +
-							`<li>Move right: ${formatKeycode(twoPlayerControlsMappingPlayer2WithoutNumpad.right)}</li>` +
-							`<li>Rotate counterclockwise: ${formatKeycode(twoPlayerControlsMappingPlayer2WithoutNumpad.rotateCounterClockwise)}</li>` +
-							`<li>Rotate clockwise: ${formatKeycode(twoPlayerControlsMappingPlayer2WithoutNumpad.rotateClockwise)}</li>` +
-							`<li>Soft drop: ${formatKeycode(twoPlayerControlsMappingPlayer2WithoutNumpad.softDrop)}</li>` +
-							`<li>Hard drop: ${formatKeycode(twoPlayerControlsMappingPlayer2WithoutNumpad.hardDrop)}</li>` +
-							`<li>Hold: ${formatKeycode(twoPlayerControlsMappingPlayer2WithoutNumpad.hold)}</li>` +
-				
-				"</ul></details></details></details>"
-			;
-		</script>
+		
+		<h2>Game controls</h2>
+		<p>Game controls are viewable and customizable in each game mode. An exception is the sandbox whose controls derive from singleplayer, thus changing singleplayer controls also changes the sandbox's.</p>
 	</body>
 </html>
