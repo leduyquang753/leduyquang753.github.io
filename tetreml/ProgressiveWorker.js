@@ -1,6 +1,8 @@
+// Version: 1
 self.addEventListener('install', function (event) {
 	console.log("Tetreml worker is being installed...");
 	console.log("Initializing cache...");
+	event.waitUntil(cache.delete("Tetreml"));
 	event.waitUntil(caches.open("Tetreml").then(function(cache) { return cache.addAll([
 		'Music/Level 1 main.mp3',
 		'Music/Level 1 opening.mp3',
