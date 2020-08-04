@@ -68,7 +68,6 @@ self.addEventListener('install', function (event) {
 		'/favicon.ico',
 		'Fumen.js',
 		'index.html',
-		'Keycode finder.html',
 		'MersenneTwister.js',
 		'ProgressiveInstaller.js',
 		'ReplayerSingleplayer.html',
@@ -83,7 +82,7 @@ self.addEventListener('install', function (event) {
 		'Tetreml-sandbox.js',
 		'Tetriminos.js',
 		'Utils.js'
-	]);	}));
+	]).except((error) => { console.log(error); }) }));
 });
 
 self.addEventListener('activate', function (event) {
