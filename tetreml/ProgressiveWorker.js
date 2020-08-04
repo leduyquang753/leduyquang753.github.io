@@ -1,7 +1,6 @@
-// Version: 2
+// Version: 1
 self.addEventListener('install', function (event) {
-	console.log("Tetreml worker is being installed...");
-	console.log("Initializing cache...");
+	console.log("Tetreml: Updating files...");
 	event.waitUntil(caches.delete("Tetreml"));
 	event.waitUntil(caches.open("Tetreml").then(function(cache) { return cache.addAll([
 		'Music/Level 1 main.mp3',
@@ -85,11 +84,12 @@ self.addEventListener('install', function (event) {
 		'Tetriminos.js',
 		'Utils.js'
 	]).catch((error) => { console.error(error); }) }));
+	self.skipWaiting();
 });
 
 self.addEventListener('activate', function (event) {
 	event.waitUntil(clients.claim());
-	console.log("Tetreml worker install successful.");
+	console.log("Tetreml: Update successful.");
 });
 
 
