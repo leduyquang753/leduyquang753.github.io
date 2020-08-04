@@ -34,7 +34,10 @@ const music = {
 	level11: new Audio("Music/Level 11 main.mp3"),
 };
 
-for (let m in music) music[m].load();
+for (let m of Object.values(music)) {
+	m.preload = "auto";
+	m.load();
+}
 
 music.level1.loop = music.level6.loop = music.level11.loop = true;
 

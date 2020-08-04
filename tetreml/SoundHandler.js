@@ -5,6 +5,7 @@ class SFX {
 		this.lastInstance = -1;
 		for (let i = 0; i < polyphony; i++) {
 			let audio = new Audio(source);
+			audio.preload = "auto";
 			audio.load();
 			this.instances.push(audio);
 		}

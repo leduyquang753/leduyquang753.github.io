@@ -27,6 +27,7 @@ const sfx = {
 
 music = new Audio("Music/Sandbox.mp3");
 music.loop = true;
+music.preload = "auto";
 music.load();
 
 const rewardNames = [
