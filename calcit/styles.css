@@ -1,0 +1,120 @@
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+	background-color: #e1bee7;
+}
+
+.tabs .indicator {
+	background-color: #8e24aa;
+}
+
+.switch label input[type=checkbox]:checked + .lever {
+	background-color: #ba68c8;
+}
+
+.switch label .lever:before {
+	background-color: rgba(142, 36, 170, 0.15);
+}
+
+.switch label input[type=checkbox]:checked + .lever:after {
+	background-color: #8e24aa;
+}
+
+input[type=checkbox]:checked:not(:disabled) ~ .lever:active::before,
+input[type=checkbox]:checked:not(:disabled).tabbed:focus ~ .lever::before {
+	background-color: rgba(142, 36, 170, 0.15);
+}
+
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:before,
+[type="radio"].with-gap:checked + span:after {
+	border: 2px solid #8e24aa;
+}
+
+[type="radio"]:checked + span:after,
+[type="radio"].with-gap:checked + span:after {
+	background-color: #8e24aa;
+}
+
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=url]:not(.browser-default):focus:not([readonly]),
+input[type=time]:not(.browser-default):focus:not([readonly]),
+input[type=date]:not(.browser-default):focus:not([readonly]),
+input[type=datetime]:not(.browser-default):focus:not([readonly]),
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]),
+input[type=tel]:not(.browser-default):focus:not([readonly]),
+input[type=number]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #8e24aa;
+	-webkit-box-shadow: 0 1px 0 0 #8e24aa;
+	box-shadow: 0 1px 0 0 #8e24aa;
+}
+
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=url]:not(.browser-default):focus:not([readonly]) + label,
+input[type=time]:not(.browser-default):focus:not([readonly]) + label,
+input[type=date]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime]:not(.browser-default):focus:not([readonly]) + label,
+input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
+input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
+input[type=number]:not(.browser-default):focus:not([readonly]) + label,
+input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+	color: #8e24aa;
+}
+
+[type="checkbox"].filled-in:checked + span:not(.lever):after {
+	border: 2px solid #8e24aa;
+	background-color: #8e24aa;
+}
+
+[type="checkbox"].filled-in.tabbed:checked:focus + span:not(.lever):after {
+	background-color: #8e24aa;
+	border-color: #8e24aa;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+nav {
+	z-index: 10;
+}
+
+textarea {
+	width: 100%;
+	height: 200px;
+	resize: vertical;
+}
+
+.nomargin {
+	margin: 0px;
+}
+
+.result {
+	font-size: 1.6rem;
+}
+
+.bottomDiv {
+	margin-bottom: 50px;
+}
+
+.fullWidth {
+	width: 100%;
+}
+
+#mainScreen {
+	flex-grow: 1;
+	overflow: auto;
+}

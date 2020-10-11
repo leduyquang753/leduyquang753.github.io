@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CalcIt</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="CalcIt" />
+		<meta property="og:description" content="Expression calculator for simple to medium calculations." />
+		<meta property="og:url" content="https://leduyquang753.github.io/calcit/" />
+		<meta property="og:image" content="https://leduyquang753.github.io/calcit/Icon.svg" />
+		<link rel="stylesheet" href="Materialize/material-icons.css">
+		<link type="text/css" rel="stylesheet" href="Materialize/materialize.css"  media="screen,projection"/>
+		<link rel="manifest" href="manifest.json">
+		<script src="ProgressiveInstaller.js"></script>
+		<script type=module src="ExpressionInvalidException.js"></script>
+		<script type=module src="GetVariableException.js"></script>
+		<script type=module src="Utils.js"></script>
+		<script type=module src="AngleUnits.js"></script>
+		<script type=module src="Operands.js"></script>
+		<script type=module src="Functions.js"></script>
+		<script type=module src="CalculatorEngine.js"></script>
+		<script src="Materialize/materialize.js" defer></script>
+		<script type=module src="CalcIt.js" defer></script>
+		<link rel=stylesheet href=styles.css>
+		<link rel="shortcut icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAANHwAADR8BvLBa5wAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAHdSURBVDiNnZLfS1NxGMaf93s2wWUqulxKY2yoR1s/xJUOJBJBb0Qt6EYvShEvIhhE4f/QXVddJNiFVBcRghUE4mBDyJMHYYr4i1o0JJaJy/BErfN9u5CNTY/RfO8evs/z+fI+vAQA4/UvfZJsARQwDNJH1nrjtB9WlgA4CgEAMBjinDCFaD1GGAAcIDMoBAvxL5dQKN374mr0VFPFenOoIdIy6o9k31gIW665ccA352oqT2f08tO469tSqpYUoOf5lWoieLUHy1puJg9QE6w0XAFnWUYnIsndrdiOSEST5DxbfhKMVHJhu+pIwExovuPQCnbx+/xgXZX+cGXW11UjW+75zTc3Z+stAVYj07JoIvDaJ01WFx9vSACc98HBQIVa+qF7oi2aBzHZDgAsWbBk5cgVAKDUcyJ1+rIze1SVjWVr1ybbvRnNJn8d90+dsQTcivVsKEWkAnAMr/SlNt9txWbuaIHp29pixvPnl2kDYA0Ih94bns5qXb3hCYbv6h+/x3+4S9wlXzoftdbmdLL95MIr6xUSkeRFlrxQ1+f+HH+72QwA9mLbXvi+vp4F/DTzOqCxhsl+Ynp2sIv/GSYeEIqUGgDjGHkDrMwRAIypU14CXyokrZCcH1q9/ukvjgqqRZKaClgAAAAASUVORK5CYII=">
+	</head>
+	<body style="visibility: hidden">
+		<nav>
+			<div class="nav-wrapper purple row">
+				<div class="col s10 m11">
+					<span class="brand-logo left">CalcIt</span>
+				</div>
+				<div class="col s2 m1 waves-effect waves-light">
+					<a class="tooltipped" data-position=bottom data-tooltip="Clear output"><i id=clearButton class="material-icons white-text center">clear</i></a>
+				</div>
+			</div>
+		</nav>
+		<div id="mainScreen" class="row fullWidth">
+			<div id=calculateScreen class="col s12">
+				<div class=container>
+					<div id=resultsPanel></div>
+					<div class="row bottomDiv">
+						<div class="input-field col s12">
+							<input id=input type=text placeholder="Enter any expression...">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id=settingsScreen class="col s12">
+				<div class=container>
+					<form id=settingsForm>
+						<p>Angle unit</p>
+						<p>
+							<label>
+								<input id=angleUnitDegree class=with-gap name=angleUnit type=radio>
+								<span class=black-text>Degrees</span>
+							</label>
+						</p>
+						<p>
+							<label>
+								<input id=angleUnitRadian class=with-gap name=angleUnit type=radio>
+								<span class=black-text>Radians</span>
+							</label>
+						</p>
+						<p>
+							<label>
+								<input id=angleUnitGradian class=with-gap name=angleUnit type=radio>
+								<span class=black-text>Gradians</span>
+							</label>
+						</p>
+						<p>Decimal separator</p>
+						<p>
+							<label>
+								<input id=decimalSeparatorDot class=with-gap name=decimalSeparator type=radio>
+								<span class=black-text>Dot</span>
+							</label>
+						</p>
+						<p>
+							<label>
+								<input id=decimalSeparatorComma class=with-gap name=decimalSeparator type=radio>
+								<span class=black-text>Comma</span>
+							</label>
+						</p>
+						<p>
+							<label>
+								<input id=enforceDecimalSeparator class=filled-in type=checkbox>
+								<span class=black-text>Enforce</span>
+							</label>
+						</p>
+						<p>Thousand separator</p>
+						<p>
+							<label>
+								<input id=thousandSeparatorSpace class=with-gap name=thousandSeparator type=radio>
+								<span class=black-text>Space</span>
+							</label>
+						</p>
+						<p>
+							<label>
+								<input id=thousandSeparatorDot class=with-gap name=thousandSeparator type=radio>
+								<span class=black-text>Dot / Comma</span>
+							</label>
+						</p>
+						<p>Multiplication sign</p>
+						<p>
+							<label>
+								<input id=multiplicationSignDot class=with-gap name=multiplicationSign type=radio>
+								<span class=black-text>Dot</span>
+							</label>
+						</p>
+						<p>
+							<label>
+								<input id=multiplicationSignAsterisk class=with-gap name=multiplicationSign type=radio>
+								<span class=black-text>Asterisk</span>
+							</label>
+						</p>
+						<p>When trying to retrieve undefined variables</p>
+						<p>
+							<label>
+								<input id=undefinedDefaultTo0 class=with-gap name=undefinedBehavior type=radio>
+								<span class=black-text>Return 0</span>
+							</label>
+						</p>
+						<p>
+							<label>
+								<input id=undefinedRaiseError class=with-gap name=undefinedBehavior type=radio>
+								<span class=black-text>Raise error</span>
+							</label>
+						</p>
+						<p>Calculate the last expression if input is empty</p>
+						<div class=switch>
+							<label class=black-text>
+								Disabled
+								<input id=calculateLastIfEmpty type=checkbox>
+								<span class="lever"></span>
+								Enabled
+							</label>
+						</div>
+						<p>Startup expressions</p>
+						<textarea id=startupExpressions></textarea>
+						<a id=applyStartupExpressions class="waves-effect waves-light btn right purple">Apply</a>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="row fullWidth nomargin">
+			<div class="col s12">
+				<ul id=navigation class="tabs">
+					<li class="tab col s6"><a href="#calculateScreen" class="purple-text"><!--<i class="material-icons center">dialpad</i><br>-->Calculate</a></li>
+					<li class="tab col s6"><a href="#settingsScreen" class="purple-text"><!--<i class="material-icons center">settings</i><br>-->Settings</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

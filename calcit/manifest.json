@@ -1,0 +1,18 @@
+{
+	"short_name": "CalcIt",
+	"name": "CalcIt",
+	"description": "Expression calculator for simple to medium calculations.",
+	"lang": "en-US",
+	"icons": [
+		{
+			"src": "Icon.svg",
+			"type": "image/svg+xml",
+			"sizes": "256x256"
+		}
+	],
+	"start_url": "index.html",
+	"background_color": "#F3E5F5",
+	"theme_color": "#F3E5F5",
+	"display": "standalone",
+	"scope": "."
+}
