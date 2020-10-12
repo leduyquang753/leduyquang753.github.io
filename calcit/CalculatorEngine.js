@@ -237,7 +237,7 @@ export class CalculatorEngine {
 			let c = input[i];
 			if (this.thousandDot && c == thousandSeparator) {
 				if (status && !calculationStatus.isVariable) continue; else throw new ExpressionInvalidException("unexpectedThousandSeparator", i+1);
-			} else if (c == '-' && !status) {
+			} else if ((c == '-' || c == '–') && !status) {
 				calculationStatus.negativity = !calculationStatus.negativity;
 				calculationStatus.hadNegation = true;
 			} else if (c == '%') {
@@ -427,6 +427,7 @@ export class CalculatorEngine {
 		try {
 			this.ans = this.performCalculation(trimmedExpression);
 		} catch (e) { // Handle and rethrow the exception to properly position the error in the expression with whitespace.
+			if (!(e instanceof ExpressionInvalidException)) throw e;
 			throw new ExpressionInvalidException(e.message, position + Utils.getIndexWithWhitespace(expression, position + e.position), e.messageArguments);
 		}
 		for (let s of toAssign) this.variableMap[s] = this.ans;

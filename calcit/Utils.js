@@ -141,7 +141,7 @@ export function getYearAndDayOfYearFromIndex(index) {
 	let temp;
 	let year = (temp = Math.floor(index / 146097)) * 400; // Gregorian calendar repeats every 146 097 days, or 400 years.
 	if ((index -= temp * 146097) == 146096) return [ year + 400, 365 ]; // Handle the last day of the cycle, which is the 366th day of the 400th year.
-	return new [ year + (cycles = Math.floor(index / 36524)) * 100 // In each repeat cycle, it repeats every 100 years, or 36 524 days; the only irregular year is the 400th year which is a leap year.
+	return [year + (cycles = Math.floor(index / 36524)) * 100 // In each repeat cycle, it repeats every 100 years, or 36 524 days; the only irregular year is the 400th year which is a leap year.
 		+ (cycles = Math.floor((index -= cycles * 36524) / 1461)) * 4 // In that sub-cycle, it also repeats every 4 years or 1461 days, except the 100th which is not a leap year.
 		+ (cycles = Math.floor((index -= cycles * 1461) / 365)) // In that sub-sub-cycle, it also repeats every year, or 365 days, except the 4th which is a leap year.
 		+ (cycles == 4 ? 0 : 1), // Handle the last day of the 4-year cycle.
@@ -154,7 +154,7 @@ export function getMonthAndDayOfMonthFromIndex(index) {
 	let table = isLeapYear(res[0]) ? monthPosLeap : monthPos;
 	let i;
 	for (i = 0; i < 12; i++) if (Math.floor(res[1]) < table[i+1]) break;
-	return new [ i, res[1] - table[i] + 1 ];
+	return [ i, res[1] - table[i] + 1 ];
 }
 
 export function getHourFromIndex(index) {
