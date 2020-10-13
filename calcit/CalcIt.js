@@ -137,6 +137,7 @@ keyboardButton.onclick = () => {
 	keyboardButton.style.display = "none";
 	keyboardFiller.className = "keyboardFillerVisible";
 	keyboard.className = "keyboardVisible";
+	scroll();
 }
 
 let hideKeyboard = () => {
