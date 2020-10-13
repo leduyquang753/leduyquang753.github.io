@@ -28,8 +28,11 @@
 	<body style="visibility: hidden">
 		<nav>
 			<div class="nav-wrapper purple row">
-				<div class="col s10 m11">
+				<div class="col s8 m10">
 					<span class="brand-logo left">CalcIt</span>
+				</div>
+				<div class="col s2 m1 waves-effect waves-light">
+					<a class="tooltipped" data-position=bottom data-tooltip="Show keyboard"><i id=keyboardButton class="material-icons white-text center">keyboard</i></a>
 				</div>
 				<div class="col s2 m1 waves-effect waves-light">
 					<a class="tooltipped" data-position=bottom data-tooltip="Clear output"><i id=clearButton class="material-icons white-text center">clear</i></a>
@@ -149,6 +152,85 @@
 					<li class="tab col s6"><a href="#calculateScreen" class="purple-text"><!--<i class="material-icons center">dialpad</i><br>-->Calculate</a></li>
 					<li class="tab col s6"><a href="#settingsScreen" class="purple-text"><!--<i class="material-icons center">settings</i><br>-->Settings</a></li>
 				</ul>
+			</div>
+		</div>
+		<div id=keyboardFiller class=keyboardFillerHidden></div>
+		<div id=keyboard class=keyboardHidden>
+			<div class=keyboardLeftWrapper>
+				<div id=keyboardLeft1 class=keyboardLeft>
+					<div class=key>x</div>
+					<div class=key>y</div>
+					<div class=key>;</div>
+					<div class=key>=</div>
+					<div class=key>^</div>
+					<div class=key>#</div>
+					<div class=key>%</div>
+					<div class=key>abs(</div>
+					<div class=key>asin(</div>
+					<div class=key>acos(</div>
+					<div class=key>atan(</div>
+					<div class=key>acot(</div>
+					<div class=key>sin(</div>
+					<div class=key>cos(</div>
+					<div class=key>tan(</div>
+					<div class=key>cot(</div>
+					<div class=key>π</div>
+					<div class=key>lne</div>
+					<div class=key>(</div>
+					<div class=key>)</div>
+				</div>
+				<div id=keyboardLeft2 class=keyboardLeft style="display: none;">
+					<div class=key>sum(</div>
+					<div class=key>average(</div>
+					<div class=key>rand(</div>
+					<div class=key>randInt(</div>
+					<div class=key>fact(</div>
+					<div class=key>flr(</div>
+					<div class=key>min(</div>
+					<div class=key>max(</div>
+					<div class=key>P(</div>
+					<div class=key>C(</div>
+					<div class=key>log(</div>
+					<div class=key>ln(</div>
+					<div class=key>GCD(</div>
+					<div class=key>LCM(</div>
+					<div class=key>&lt;</div>
+					<div class=key>&gt;</div>
+					<div class=key>[</div>
+					<div class=key>]</div>
+					<div class=key>{</div>
+					<div class=key>}</div>
+				</div>
+			</div>
+			<div id=keyboardGap></div>
+			<div class=keyboardRightWrapper>
+				<div id=keyboardRight>
+					<div id=keyP1 class="key purple accent-1">P1</div>
+					<div id=keyP2 class="key grey lighten-1">P2</div>
+					<div id=keyHide class="key grey lighten-1"><i class="material-icons tiny">keyboard_hide</i></div>
+					<div id=keyClear class="key grey lighten-1"><i class="material-icons tiny">clear</i></div>
+					<div id=keyBackspace class="key grey lighten-1"><i class="material-icons tiny">backspace</i></div>
+					<div class=key>7</div>
+					<div class=key>8</div>
+					<div class=key>9</div>
+					<div class=key>PreAns</div>
+					<div class=key>Ans</div>
+					<div class=key>4</div>
+					<div class=key>5</div>
+					<div class=key>6</div>
+					<div id=keyMultiply class=key>.</div>
+					<div id=keyDivide class=key>:</div>
+					<div class=key>1</div>
+					<div class=key>2</div>
+					<div class=key>3</div>
+					<div class=key>+</div>
+					<div class=key>–</div>
+					<div class=key>0</div>
+					<div id=keyDecimalSeparator class=key>,</div>
+					<div id=keyExp class=key>.10^</div>
+					<div id=keySpace class="key dummy">⎵</div>
+					<div id=keyEnter class="key purple white-text"><i class="material-icons tiny">keyboard_return</i></div>
+				</div>
 			</div>
 		</div>
 	</body>

@@ -65,35 +65,126 @@ function addOutput(html) {
 	screen.scrollTop = screen.scrollHeight;
 }
 
-document.getElementById("input").onkeydown = (event) => {
-	if (event.key != "Enter") return;
-	let expression = document.getElementById("input").value.trim();
+let inputBox = document.getElementById("input");
+
+let calculate = () => {
+	let expression = inputBox.value.trim();
 	if (expression == '')
 		if (config.calculateLastIfEmpty && lastExpression != null) expression = lastExpression; else return;
 	try {
 		addOutput(`${expression}<br><span class=result>= ${Utils.formatNumber(engine.calculate(expression), engine)}</span>`);
-		document.getElementById("input").value = "";
+		inputBox.value = "";
 		lastExpression = expression;
 	} catch (e) {
 		if (e instanceof ExpressionInvalidException) {
 			let errorString = stringMap["error." + e.message];
 			if (e.messageArguments != null) for (let arg of e.messageArguments) errorString = errorString.replace("%s", arg);
-			addOutput(`${expression}<br><span class="red-text">ERROR: ${errorString}</span>`);
-			document.getElementById("input").setSelectionRange(e.position, e.position);
+			addOutput(`${expression}<br><span class="red-text">ERROR at position ${e.position}:<br>${errorString}</span>`);
+			inputBox.setSelectionRange(e.position, e.position);
 		} else throw e;
 	}
 	hasOutputSinceLastSettingsChange = true;
 }
 
-let clearButton = document.getElementById("clearButton");
-clearButton.onclick = () => {
-	document.getElementById("resultsPanel").innerHTML = "";
+inputBox.onkeydown = (event) => {
+	if (event.key != "Enter") return;
+	calculate();
 }
-M.Tooltip.init(clearButton, { html: "Clear output" });
+
+let keyInputEvent = (event) => {
+	inputBox.value += event.target.innerHTML;
+}
+
+function registerKeys(element) {
+	for (let key of element.children)
+		if (key.className == "key") key.onclick = keyInputEvent;
+}
+let keyboardLeft1 = document.getElementById("keyboardLeft1");
+let keyboardLeft2 = document.getElementById("keyboardLeft2");
+
+registerKeys(keyboardLeft1);
+registerKeys(keyboardLeft2);
+registerKeys(document.getElementById("keyboardRight"));
+
+let keyP1 = document.getElementById("keyP1");
+let keyP2 = document.getElementById("keyP2");
+
+keyP1.onclick = () => {
+	keyboardLeft1.style.display = "grid";
+	keyboardLeft2.style.display = "none";
+	keyP1.className = "key purple accent-1";
+	keyP2.className = "key grey lighten-1";
+}
+
+keyP2.onclick = () => {
+	keyboardLeft2.style.display = "grid";
+	keyboardLeft1.style.display = "none";
+	keyP2.className = "key purple accent-1";
+	keyP1.className = "key grey lighten-1";
+}
+
+let keyboardVisible = false;
+let keyboardButton = document.getElementById("keyboardButton");
+let keyboardFiller = document.getElementById("keyboardFiller");
+let keyboard = document.getElementById("keyboard");
+
+keyboardButton.onclick = () => {
+	keyboardVisible = true;
+	keyboardButton.style.display = "none";
+	keyboardFiller.className = "keyboardFillerVisible";
+	keyboard.className = "keyboardVisible";
+}
+
+let hideKeyboard = () => {
+	keyboardVisible = false;
+	keyboardFiller.className = "keyboardFillerHidden";
+	keyboard.className = "keyboardHidden";
+	keyboardButton.style.display = "block";
+}
+
+inputBox.onfocus = hideKeyboard;
+document.getElementById("keyHide").onclick = hideKeyboard;
+
+document.getElementById("keyClear").onclick = () => {
+	inputBox.value = "";
+}
+
+document.getElementById("keyBackspace").onclick = () => {
+	inputBox.value = inputBox.value.slice(0, -1);
+}
+
+document.getElementById("keySpace").onclick = () => {
+	inputBox.value += " ";
+}
+
+document.getElementById("keyEnter").onclick = calculate;
+
+{
+	let clearButton = document.getElementById("clearButton");
+	clearButton.onclick = () => {
+		document.getElementById("resultsPanel").innerHTML = "";
+	}
+	M.Tooltip.init(clearButton, { html: "Clear output" });
+}
+M.Tooltip.init(keyboardButton, { html: "Show keyboard" });
 
 M.Tabs.init(document.getElementById("navigation"), {
 	onShow: (page) => {
-		clearButton.style.display = page.id == "calculateScreen" ? "block" : "none";
+		if (page.id == "calculateScreen") {
+			if (keyboardVisible) {
+				keyboardFiller.className = "keyboardFillerVisible";
+				keyboard.className = "keyboardVisible";
+			} else {
+				keyboardButton.style.display = "block";
+			}
+			clearButton.style.display = "block";
+		} else {	
+			keyboardButton.style.display = clearButton.style.display = "none";
+			if (keyboardVisible) {
+				keyboardFiller.className = "keyboardFillerHidden";
+				keyboard.className = "keyboardHidden";
+			}
+		}
 	}
 });
 
@@ -111,6 +202,13 @@ let
 		zeroUndefinedVars: false,
 		calculateLastIfEmpty: true,
 	};
+
+function updateKeys() {
+	document.getElementById("keyMultiply").innerHTML = config.mulAsterisk ? "×" : ".";
+	document.getElementById("keyDivide").innerHTML = config.mulAsterisk ? "÷" : ":";
+	document.getElementById("keyDecimalSeparator").innerHTML = config.decimalDot ? "." : ",";
+	document.getElementById("keyExp").innerHTML = config.mulAsterisk ? "×10^" : ".10^";
+}
 
 function loadConfig() {
 	engine.angleUnit = AngleUnit[config.angleUnit];

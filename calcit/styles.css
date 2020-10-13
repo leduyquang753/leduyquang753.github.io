@@ -86,6 +86,7 @@ body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 }
 
 nav {
@@ -117,4 +118,74 @@ textarea {
 #mainScreen {
 	flex-grow: 1;
 	overflow: auto;
+}
+
+#keyboardFiller {
+	transition: height 0.1s ease-out 0s, min-height 0.1s ease-out 0s;
+}
+
+.keyboardFillerVisible {
+	height: 30%;
+	min-height: 30%;
+}
+
+.keyboardFillerHidden {
+	height: 0;
+	min-height: 0%;
+}
+
+#keyboard {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+	height: 30%;
+	transition: transform 0.1s ease-out 0s;
+	background: #eee;
+	z-index: 100;
+	display: grid;
+	grid-template-columns: 50fr 8fr 42fr;
+	padding: 10px;
+}
+
+.keyboardHidden {
+	transform: translateY(100%);
+}
+
+.keyboardLeft {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	height: 100%;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-gap: 4px;
+}
+
+
+.keyboardLeftWrapper, .keyboardRightWrapper {
+	width: 100%;
+	height: 100%;
+}
+
+#keyboardRight {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	height: 100%;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	grid-gap: 4px;
+}
+
+.key {
+	background: white;
+	text-align: center;
+	vertical-align: middle;
+	border-radius: 3px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	cursor: pointer;
+	user-select: none;
 }
