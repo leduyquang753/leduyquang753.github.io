@@ -101,7 +101,7 @@ let keyInputEvent = (event) => {
 
 function registerKeys(element) {
 	for (let key of element.children)
-		if (key.dataset.special === undefined) key.onclick = keyInputEvent;
+		if (key.dataset.special !== "") key.onclick = keyInputEvent;
 }
 let keyboardLeft1 = document.getElementById("keyboardLeft1");
 let keyboardLeft2 = document.getElementById("keyboardLeft2");
@@ -137,7 +137,7 @@ keyboardButton.onclick = () => {
 	keyboardButton.style.display = "none";
 	keyboardFiller.className = "keyboardFillerVisible";
 	keyboard.className = "keyboardVisible";
-	scroll();
+	setTimeout(scroll, 150);
 }
 
 let hideKeyboard = () => {
@@ -168,15 +168,9 @@ document.getElementById("keySpace").onclick = () => {
 }
 
 document.getElementById("keyEnter").onclick = calculate;
-
-{
-	let clearButton = document.getElementById("clearButton");
-	clearButton.onclick = () => {
-		document.getElementById("resultsPanel").innerHTML = "";
-	}
-	M.Tooltip.init(clearButton, { html: "Clear output" });
+document.getElementById("clearButton").onclick = () => {
+	document.getElementById("resultsPanel").innerHTML = "";
 }
-M.Tooltip.init(keyboardButton, { html: "Show keyboard" });
 
 M.Tabs.init(document.getElementById("navigation"), {
 	onShow: (page) => {
