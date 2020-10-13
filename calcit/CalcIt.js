@@ -101,7 +101,7 @@ let keyInputEvent = (event) => {
 
 function registerKeys(element) {
 	for (let key of element.children)
-		if (key.className == "key") key.onclick = keyInputEvent;
+		if (key.dataset.special === undefined) key.onclick = keyInputEvent;
 }
 let keyboardLeft1 = document.getElementById("keyboardLeft1");
 let keyboardLeft2 = document.getElementById("keyboardLeft2");
@@ -226,6 +226,7 @@ function loadConfig() {
 	engine.thousandDot = config.thousandDot;
 	engine.mulAsterisk = config.mulAsterisk;
 	engine.zeroUndefinedVars = config.zeroUndefinedVars;
+	updateKeys();
 }
 
 function saveConfig() {
@@ -330,6 +331,7 @@ document.getElementById("decimalSeparatorDot").onchange = document.getElementByI
 		document.getElementById("multiplicationSignAsterisk").checked = true;
 	}
 	saveConfig();
+	updateKeys();
 	onFormatsUpdated();
 };
 
@@ -344,6 +346,7 @@ document.getElementById("thousandSeparatorDot").onchange = document.getElementBy
 		document.getElementById("multiplicationSignAsterisk").checked = true;
 	}
 	saveConfig();
+	updateKeys();
 	onFormatsUpdated();
 };
 
@@ -354,6 +357,7 @@ document.getElementById("multiplicationSignDot").onchange = document.getElementB
 		document.getElementById("decimalSeparatorComma").checked = true;
 	}
 	saveConfig();
+	updateKeys();
 	onFormatsUpdated();
 };
 
