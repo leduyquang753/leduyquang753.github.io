@@ -92,7 +92,7 @@ inputBox.onkeydown = (event) => {
 }
 
 let keyInputEvent = (event) => {
-	setInput(inputBox.value + event.target.innerHTML);
+	setInput(inputBox.value + (event.target.dataset.content || event.target.innerHTML));
 }
 
 function registerKeys(element) {
@@ -161,10 +161,6 @@ document.getElementById("keyClear").onclick = () => {
 
 document.getElementById("keyBackspace").onclick = () => {
 	setInput(inputBox.value.slice(0, -1));
-}
-
-document.getElementById("keySpace").onclick = () => {
-	setInput(inputBox.value + " ");
 }
 
 document.getElementById("keyEnter").onclick = calculate;
