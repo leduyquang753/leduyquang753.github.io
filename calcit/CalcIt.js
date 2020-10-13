@@ -54,10 +54,6 @@ let engine = new CalculatorEngine;
 
 let screen = document.getElementById("mainScreen");
 
-function scroll() {
-	screen.scrollTop = screen.scrollHeight;
-}
-
 function addOutput(html) {
 	let element = document.createElement("div");
 	element.className = "row scale-transition scale-out nomargin";
@@ -66,7 +62,7 @@ function addOutput(html) {
 	setTimeout(() => {
 		element.classList.add("scale-in");
 	}, 1);
-	scroll();
+	element.scrollIntoView();
 }
 
 let inputBox = document.getElementById("input");
@@ -131,6 +127,10 @@ let keyboardVisible = false;
 let keyboardButton = document.getElementById("keyboardButton");
 let keyboardFiller = document.getElementById("keyboardFiller");
 let keyboard = document.getElementById("keyboard");
+
+function scroll() {
+	inputBox.scrollIntoView();
+}
 
 keyboardButton.onclick = () => {
 	keyboardVisible = true;

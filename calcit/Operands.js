@@ -59,7 +59,7 @@ export class Exponentiation extends Operand {
 
 export class Root extends Operand {
 	constructor() {
-		super([ "#" ], 4);
+		super([ "#", "√" ], 4);
 	}
 	calculate(val1, val2, engine) {
 		if (val1 == 0) throw new ExpressionInvalidException("level0Root");
