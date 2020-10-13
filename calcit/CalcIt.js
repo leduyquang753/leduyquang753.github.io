@@ -54,6 +54,10 @@ let engine = new CalculatorEngine;
 
 let screen = document.getElementById("mainScreen");
 
+function scroll() {
+	screen.scrollTop = screen.scrollHeight;
+}
+
 function addOutput(html) {
 	let element = document.createElement("div");
 	element.className = "row scale-transition scale-out nomargin";
@@ -62,7 +66,7 @@ function addOutput(html) {
 	setTimeout(() => {
 		element.classList.add("scale-in");
 	}, 1);
-	screen.scrollTop = screen.scrollHeight;
+	scroll();
 }
 
 let inputBox = document.getElementById("input");
@@ -92,7 +96,7 @@ inputBox.onkeydown = (event) => {
 }
 
 let keyInputEvent = (event) => {
-	inputBox.value += event.target.innerHTML;
+	setInput(inputBox.value + event.target.innerHTML);
 }
 
 function registerKeys(element) {
@@ -145,16 +149,21 @@ let hideKeyboard = () => {
 inputBox.onfocus = hideKeyboard;
 document.getElementById("keyHide").onclick = hideKeyboard;
 
+function setInput(newInput) {
+	inputBox.value = newInput;
+	scroll();
+}
+
 document.getElementById("keyClear").onclick = () => {
-	inputBox.value = "";
+	setInput("");
 }
 
 document.getElementById("keyBackspace").onclick = () => {
-	inputBox.value = inputBox.value.slice(0, -1);
+	setInput(inputBox.value.slice(0, -1));
 }
 
 document.getElementById("keySpace").onclick = () => {
-	inputBox.value += " ";
+	setInput(inputBox.value + " ");
 }
 
 document.getElementById("keyEnter").onclick = calculate;
