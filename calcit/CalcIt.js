@@ -130,6 +130,7 @@ let keyboard = document.getElementById("keyboard");
 
 function scroll() {
 	inputBox.scrollIntoView();
+	inputBox.scrollLeft = inputBox.scrollWidth;
 }
 
 keyboardButton.onclick = () => {
