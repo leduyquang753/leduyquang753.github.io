@@ -57,7 +57,7 @@ let screen = document.getElementById("mainScreen");
 function addOutput(html) {
 	let element = document.createElement("div");
 	element.className = "row scale-transition scale-out nomargin";
-	element.innerHTML = `<div class="col s12"><div class="card white"><div class="card-content black-text">${html}</div></div></div>`;
+	element.innerHTML = `<div class="col s12"><div class="card white"><div class="card-content black-text output-card">${html}</div></div></div>`;
 	document.getElementById("resultsPanel").appendChild(element);
 	setTimeout(() => {
 		element.classList.add("scale-in");

@@ -103,6 +103,10 @@ textarea {
 	margin: 0px;
 }
 
+.output-card {
+	word-break: break-all;
+}
+
 .result {
 	font-size: 1.6rem;
 }
