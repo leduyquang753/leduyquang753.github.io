@@ -346,7 +346,7 @@ export class CalculatorEngine {
 						hadClosingBrace = true;
 						hadPercent = false;
 					} else if (calculationStatus.OS.slice(-1)[0] instanceof Operand.OpeningBrace) {
-						if (BS.length != 0 && !areBracesMatch(BS.slice(-1)[0].opening, c)) throw new ExpressionInvalidException("unmatchingBraces", i + 1);
+						if (BS.length != 0 && !this.areBracesMatch(BS.slice(-1)[0].opening, c)) throw new ExpressionInvalidException("unmatchingBraces", i + 1);
 						calculationStatus.OS.pop();
 						(currentBracelet = BS.pop()).addArgument(0);
 						calculationStatus.NS.push(currentBracelet.getResult());
