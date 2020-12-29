@@ -1,0 +1,18 @@
+{
+	"short_name": "Countdown",
+	"name": "Simple countdown",
+	"description": "A simple countdown app to specific dates.",
+	"lang": "en-US",
+	"icons": [
+		{
+			"src": "icon.svg",
+			"type": "image/svg+xml",
+			"sizes": "256x256"
+		}
+	],
+	"start_url": "index.html",
+	"background_color": "#00F8E6",
+	"theme_color": "#00AFA2",
+	"display": "standalone",
+	"scope": "."
+}

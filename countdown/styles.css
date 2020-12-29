@@ -1,0 +1,103 @@
+* {
+	font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+body {
+	padding: 15px;
+	background-color: #00F8E6;
+}
+
+summary {
+	-webkit-user-select: none;
+	width: fit-content;
+}
+
+input[type="radio"], input[type="checkbox"], label, summary, button {
+	cursor: pointer;
+}
+
+button {
+	background-color: #009F93;
+	color: white;
+	border: none;
+	border-radius: 3px;
+}
+
+button:hover {
+	background-color: #00b8a8;
+}
+
+label {
+	white-space: pre;
+}
+
+/* ----------------------- */
+
+.wrapper {
+	max-width: 700px;
+	margin: 0 auto;
+}
+
+.countdownEntry {
+	width: 100%;
+	margin-bottom: 15px;
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 6px;
+	-webkit-user-select: none;
+}
+
+.countdownEntry:hover {
+	background-color: rgba(255, 255, 255, 0.82);
+}
+
+.countdownTopLine {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.countdownTopLeft {
+	flex: 1;
+}
+
+.icon {
+	font-family: "Segoe MDL2 assets";
+	cursor: pointer;
+}
+
+.countdownDisplay {
+	font: 36px "Segoe UI";
+	text-align: right;
+}
+
+.inputBox {
+	border-radius: 0;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	background: none;
+}
+
+.numberBox {
+	width: 50px;
+	text-align: right;
+}
+
+.centeredTable td {
+	text-align: center;
+	width: 60px;
+}
+
+/* ----------------------- */
+
+#addCountdownForm {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.7);
+	border-radius: 6px;
+}

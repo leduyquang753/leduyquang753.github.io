@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Simple countdown" />
+		<meta property="og:description" content="A simple countdown app to specific dates." />
+		<meta property="og:url" content="https://leduyquang753.github.io/countdown/" />
+		<meta property="og:image" content="https://leduyquang753.github.io/countdown/icon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Countdown</title>
+
+		<link rel="manifest" href="manifest.json">
+		<script src="ProgressiveInstaller.js"></script>
+
+		<link rel=stylesheet href="fonts/font.css">
+		<link rel=stylesheet href=styles.css>
+		<script type=module src=datetime.js></script>
+		<script defer type=module src=script.js></script>
+	</head>
+	<body>
+		<div class=wrapper>
+			<div id=countdowns></div>
+			<div id=addCountdownForm>
+				<details>
+					<summary>Add countdown</summary>
+					<p><input id=addCountdown_amountOption type=radio name=addCountdown_option checked><label for=addCountdown_amountOption>Amount:</label> <input id=addCountdown_amountDays class="inputBox numberBox" type=number min=0 value=0> d <input id=addCountdown_amountHours class="inputBox numberBox" type=number min=0 value=0> h <input id=addCountdown_amountMinutes class="inputBox numberBox" type=number min=0 value=00> : <input id=addCountdown_amountSeconds class="inputBox numberBox" type=number min=0 value=00></p>
+					<p><input id=addCountdown_toDateOption type=radio name=addCountdown_option><label for=addCountdown_toDateOption>Until:</label> <input id=addCountdown_expiryHour class="inputBox numberBox" type=number min=0 value=0> h <input id=addCountdown_expiryMinute class="inputBox numberBox" type=number min=0 value=00> : <input id=addCountdown_expirySecond class="inputBox numberBox" type=number min=0 value=00> | <input id=addCountdown_expiryDay class="inputBox numberBox" type=number min=1 max=31 step=1 value=1> / <input id=addCountdown_expiryMonth class="inputBox numberBox" type=number min=1 max=12 step=1 value=1> / <input id=addCountdown_expiryYear class="inputBox numberBox" type=number min=0 step=1 value=2020> | Timezone: <input id=addCountdown_expiryTimezone class="inputBox numberBox" type=number min=-12 max=12 step=0.5 value=0></p>
+					<p><span style="width: 100%; display: flex; flex-direction: row;"><label for=addCountdown_name>Name: </label><input id=addCountdown_name type=text class=inputBox style="flex: 1;"></span></p>
+					<p>
+						Display range:
+						<table class=centeredTable>
+							<tr>
+								<td>Day</td>
+								<td>Hour</td>
+								<td>Minute</td>
+								<td>Second</td>
+							</tr>
+							<tr>
+								<td><input id=addCountdown_display1Day type=radio name=addCountdown_display1 value=0 checked></td>
+								<td><input id=addCountdown_display1Hour type=radio name=addCountdown_display1 value=1></td>
+								<td><input id=addCountdown_display1Minute type=radio name=addCountdown_display1 value=2></td>
+								<td><input id=addCountdown_display1Second type=radio name=addCountdown_display1 value=3></td>
+							</tr>
+							<tr>
+								<td><input id=addCountdown_display2Day type=radio name=addCountdown_display2 value=0></td>
+								<td><input id=addCountdown_display2Hour type=radio name=addCountdown_display2 value=1></td>
+								<td><input id=addCountdown_display2Minute type=radio name=addCountdown_display2 value=2></td>
+								<td><input id=addCountdown_display2Second type=radio name=addCountdown_display2 value=3 checked></td>
+							</tr>
+						</table>
+					</p>
+					<p><input id=addCountdown_showExpiry type=checkbox><label for=addCountdown_showExpiry>Show due time</label></p>
+					<p><button id=addCountdown_add>Add</button></p>
+				</details>
+			</div>
+			<div id=editCountdownForm style="display: none;">
+				<p>Edit countdown</p>
+				<p><input id=editCountdown_amountOption type=radio name=editCountdown_option checked><label for=editCountdown_amountOption>Amount:</label> <input id=editCountdown_amountDays class="inputBox numberBox" type=number min=0 value=0> d <input id=editCountdown_amountHours class="inputBox numberBox" type=number min=0 value=0> h <input id=editCountdown_amountMinutes class="inputBox numberBox" type=number min=0 value=00> : <input id=editCountdown_amountSeconds class="inputBox numberBox" type=number min=0 value=00></p>
+				<p><input id=editCountdown_toDateOption type=radio name=editCountdown_option><label for=editCountdown_toDateOption>Until:</label> <input id=editCountdown_expiryHour class="inputBox numberBox" type=number min=0 value=0> h <input id=editCountdown_expiryMinute class="inputBox numberBox" type=number min=0 value=00> : <input id=editCountdown_expirySecond class="inputBox numberBox" type=number min=0 value=00> | <input id=editCountdown_expiryDay class="inputBox numberBox" type=number min=1 max=31 step=1 value=1> / <input id=editCountdown_expiryMonth class="inputBox numberBox" type=number min=1 max=12 step=1 value=1> / <input id=editCountdown_expiryYear class="inputBox numberBox" type=number min=0 step=1 value=2020> | Timezone: <input id=editCountdown_expiryTimezone class="inputBox numberBox" type=number min=-12 max=12 step=0.5 value=0></p>
+				<p><span style="width: 100%; display: flex; flex-direction: row;"><label for=editCountdown_name>Name: </label><input id=editCountdown_name type=text class=inputBox style="flex: 1;"></span></p>
+				<p>
+					Display range:
+					<table class=centeredTable>
+						<tr>
+							<td>Day</td>
+							<td>Hour</td>
+							<td>Minute</td>
+							<td>Second</td>
+						</tr>
+						<tr>
+							<td><input id=editCountdown_display1Day type=radio name=editCountdown_display1 value=0 checked></td>
+							<td><input id=editCountdown_display1Hour type=radio name=editCountdown_display1 value=1></td>
+							<td><input id=editCountdown_display1Minute type=radio name=editCountdown_display1 value=2></td>
+							<td><input id=editCountdown_display1Second type=radio name=editCountdown_display1 value=3></td>
+						</tr>
+						<tr>
+							<td><input id=editCountdown_display2Day type=radio name=editCountdown_display2 value=0></td>
+							<td><input id=editCountdown_display2Hour type=radio name=editCountdown_display2 value=1></td>
+							<td><input id=editCountdown_display2Minute type=radio name=editCountdown_display2 value=2></td>
+							<td><input id=editCountdown_display2Second type=radio name=editCountdown_display2 value=3 checked></td>
+						</tr>
+					</table>
+				</p>
+				<p><input id=editCountdown_showExpiry type=checkbox><label for=editCountdown_showExpiry>Show due time</label></p>
+				<p><button id=editCountdown_apply>Apply</button> <button id=editCountdown_cancel>Cancel</button></p>
+			</div>
+		</div>
+	</body>
+</html>
