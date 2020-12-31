@@ -89,3 +89,9 @@ const durationFormattingFunctions = [
 export function formatDuration(start = 0, offset = 3, secs) {
 	return durationFormattingFunctions[start][offset](secs);
 }
+
+const timeUnitDenominators = [86400, 3600, 60, 1];
+
+export function getUnits(unit, secs) {
+	return Math.max(-1, Math.floor(secs / timeUnitDenominators[unit]));
+}

@@ -1,4 +1,4 @@
-// Version: -998
+// Version: 2
 self.addEventListener('install', function (event) {
 	console.log("Countdown: Updating files...");
 	event.waitUntil(caches.delete("Countdown"));

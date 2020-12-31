@@ -66,17 +66,20 @@ function update() {
 		countdown.id = id;
 		countdown.element = element;
 		countdown.display = display;
+		countdown.formatEnd = countdown.formatStart + countdown.formatOffset;
 		countdowns[id] = countdown;
 	}
 	document.countdownsToAdd = [];
 	if (dirty) saveCountdowns();
 	let timestamp = new Date().getTime();
 	for (let countdown of Object.values(countdowns)) {
-		let newDisplay = timestamp < countdown.expiry
-			? DateTimeUtil.formatDuration(countdown.formatStart, countdown.formatOffset, Math.floor((countdown.expiry - timestamp) / 1000))
-			: "Due.";
+		let secs = Math.floor((countdown.expiry - timestamp) / 1000);
+		let newDisplay = DateTimeUtil.getUnits(countdown.formatEnd, secs);
 		if (newDisplay != countdown.oldDisplay) {
-			countdown.oldDisplay = countdown.display.innerHTML = newDisplay;
+			countdown.display.innerHTML = timestamp < countdown.expiry
+				? DateTimeUtil.formatDuration(countdown.formatStart, countdown.formatOffset, secs)
+				: "Due.";
+			countdown.oldDisplay = newDisplay;
 		}
 	}
 }
