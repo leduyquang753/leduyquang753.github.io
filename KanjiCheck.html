@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Beginner kanji checker" />
+		<meta property="og:description" content="Check for beginner-unfriendly kanji for the English – Japanese language exchange Discord server." />
+		<meta property="og:url" content="https://leduyquang753.github.io/KanjiCheck.html" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Beginner kanji checker</title>
+		<style>
+			body {
+				font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+				font-size: 12px;
+				padding: 15px;
+				background-color: #F48FB1;
+			}
+			
+			h1 {
+				font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+				font-weight: lighter;
+				font-size: 36px;
+				margin-block-start: 0px;
+				margin-block-end: 0px;
+			}
+
+			h2 {
+				font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+				font-size: 18px;
+				font-weight: normal;
+				margin-block-start: 10px;
+				margin-block-end: 0px;
+			}
+
+			.wrapper {
+				max-width: 700px;
+				margin: 0 auto;
+			}
+
+			.panel {
+				width: 100%;
+				margin-bottom: 15px;
+				padding: 10px;
+				box-sizing: border-box;
+				background-color: rgba(255, 255, 255, 0.7);
+				border-radius: 6px;
+			}
+
+			button {
+				font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+				background-color: #AD1457;
+				color: white;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+				padding: 5px 10px;
+				font-size: 18px;
+			}
+
+			button:hover {
+				background-color: #D81B60;
+			}
+
+			.japanese {
+				font-family: Segoe UI, Meiryo UI, Meiryo, MS Gothic, Osaka, sans-serif;
+				font-size: 18px;
+			}
+
+			.highlight {
+				background-color: rgba(216, 27, 96, 0.4);
+			}
+
+			#messageInput {
+				width: 100%;
+				box-sizing: border-box;
+				resize: vertical;
+				background-color: rgba(255, 255, 255, 0.5);
+				border: none;
+				padding: 10px;
+			}
+
+			#messageInput:hover, #messageInput:focus {
+				background-color: rgba(255, 255, 255, 0.7);
+			}
+		</style>
+	</head>
+	<body>
+		<div class=wrapper>
+			<div class=panel>
+				<h1>Beginner kanji checker</h1>
+				<h2>For the English – Japanese language exchange Discord server</h2>
+				<p>This is a little tool to check a message for kanji considered beginner-unfriendly in the #beginner_jpn_chat channel of the English – Japanese language exchange server on Discord. Simply type/paste your message below and press <i>Check</i>, the tool will highlight kanji not in the beginner-friendly list.</p>
+			</div>
+			<div class=panel>
+				<p><label for=messageInput>Message</label></p>
+				<textarea id=messageInput class=japanese rows=5></textarea>
+				<p><button onclick=checkMessage()>Check</button></p>
+			</div>
+			<div class=panel>
+				<p>Result:</p>
+				<p class=japanese id=result><i style="font-size: 12px;">(No results yet.)</i></p>
+				<span id=count></span>
+			</div>
+		</div>
+		<script>
+			const messageInput = document.getElementById("messageInput");
+			const resultContainer = document.getElementById("result");
+			const countContainer = document.getElementById("count");
+			const beginnerFriendlyKanji = new Set();
+			for (let kanji of "安一二飲右雨駅円火花下何会外学間気九休魚金空月見言古五後午語校口行高国今左三山四子耳時七車社手週十出書女小少上食新人水生西川千先前足多大男中長天店電土東道読南日入年買白八半百父分聞母北木本毎万名目友来立六話悪暗医意以引院員運英映遠屋音歌夏家画海回開界楽館漢寒顔帰起究急牛去強教京業近銀区計兄軽犬研県建験元工広考光好合黒菜作産紙思姉止市仕死使始試私字自事持室質写者借弱首主秋集習終住重春所暑場乗色森心親真進図青正声世赤夕切説洗早走送族村体太待貸台代題短知地池茶着昼注町鳥朝通弟低転田都度答冬頭同動堂働特肉売発飯病品不風服物文別勉便歩方妹味民明門問夜野薬有曜用洋理旅料力林当誰俺難違僕他付伝位例全公内初助化君和変丈夫失守昔昨最未末様次然的直石礼笑米糸絵美良虫血負部配面願")
+				beginnerFriendlyKanji.add(kanji);
+
+			function isBeginnerUnfriendly(char) {
+				let code = char.charCodeAt(0);
+				return ((code > 19967 && code < 40880) || (code > 13311 && code < 19904)) && !beginnerFriendlyKanji.has(char);
+			}
+
+			function checkMessage() {
+				let message = messageInput.value;
+				let count = 0;
+				resultContainer.innerHTML = "";
+				for (let char of message)
+					if (isBeginnerUnfriendly(char)) {
+						let element = document.createElement("span");
+						element.className = "highlight";
+						element.innerText = char;
+						resultContainer.append(element);
+						count++;
+					}
+					else resultContainer.append(char);
+				countContainer.innerText = `There are ${count == 0 ? "no" : count} beginner-unfriendly kanji.`;
+			}
+		</script>
+	</body>
+</html>
