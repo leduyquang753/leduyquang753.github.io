@@ -58,6 +58,7 @@ function update() {
 		topRight.append("\uE74D");
 		topRight.dataset.id = id;
 		topRight.onclick = removeCountdown;
+		topRight.tabindex = 0;
 		top.append(topLeft, topRight);
 		let display = document.createElement("div");
 		display.className = "countdownDisplay";
