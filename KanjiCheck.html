@@ -129,7 +129,7 @@
 						count++;
 					}
 					else resultContainer.append(char);
-				countContainer.innerText = `There are ${count == 0 ? "no" : count} beginner-unfriendly kanji.`;
+				countContainer.innerText = `There ${count == 0 ? "are no" : count == 1 ? "is 1" : "are " + count} beginner-unfriendly kanji.`;
 			}
 		</script>
 	</body>
