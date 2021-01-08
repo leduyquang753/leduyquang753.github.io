@@ -35,6 +35,10 @@ function removeCountdown(event) {
 	dirty = true;
 }
 
+function onDeleteButtonKeyDown(event) {
+	if (event.key == "Enter" || event.key == " ") removeCountdown(event);
+}
+
 function update() {
 	requestAnimationFrame(update);
 	for (let ID of document.IDsToDelete) if (ID in countdowns) {
@@ -58,6 +62,7 @@ function update() {
 		topRight.append("\uE74D");
 		topRight.dataset.id = id;
 		topRight.onclick = removeCountdown;
+		topRight.onkeydown = onDeleteButtonKeyDown;
 		topRight.tabIndex = 0;
 		top.append(topLeft, topRight);
 		let display = document.createElement("div");
