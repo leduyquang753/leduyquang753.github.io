@@ -116,19 +116,26 @@
 				return ((code > 19967 && code < 40880) || (code > 13311 && code < 19904)) && !beginnerFriendlyKanji.has(char);
 			}
 
+			const escapeMapping = {
+				'&': "&amp;",
+				'<': "&lt;",
+				'>': "&gt;",
+				'\n': "<br>"
+			}
+
+			function escapeCharacter(char) {
+				return char in escapeMapping ? escapeMapping[char] : char;
+			}
+
 			function checkMessage() {
 				let message = messageInput.value;
 				let count = 0;
+				let result = "";
 				resultContainer.innerHTML = "";
 				for (let char of message)
-					if (isBeginnerUnfriendly(char)) {
-						let element = document.createElement("span");
-						element.className = "highlight";
-						element.innerText = char;
-						resultContainer.append(element);
-						count++;
-					}
-					else resultContainer.append(char);
+					if (isBeginnerUnfriendly(char)) result += `<span class=highlight>${char}</span>`;
+					else result += escapeCharacter(char);
+				resultContainer.innerHTML = result;
 				countContainer.innerText = `There ${count == 0 ? "are no" : count == 1 ? "is 1" : "are " + count} beginner-unfriendly kanji.`;
 			}
 		</script>
