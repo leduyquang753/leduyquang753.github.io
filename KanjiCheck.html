@@ -10,15 +10,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Beginner kanji checker</title>
 		<style>
+			body, h1, h2, button {
+				font-family: 'Segoe UI', Meiryo, Osaka, Helvetica, Arial, sans-serif;
+			}
+
 			body {
-				font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
 				font-size: 12px;
 				padding: 15px;
 				background-color: #F48FB1;
 			}
 			
 			h1 {
-				font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
 				font-weight: lighter;
 				font-size: 36px;
 				margin-block-start: 0px;
@@ -26,7 +28,6 @@
 			}
 
 			h2 {
-				font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
 				font-size: 18px;
 				font-weight: normal;
 				margin-block-start: 10px;
@@ -48,7 +49,6 @@
 			}
 
 			button {
-				font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
 				background-color: #AD1457;
 				color: white;
 				border: none;
@@ -83,23 +83,29 @@
 			#messageInput:hover, #messageInput:focus {
 				background-color: rgba(255, 255, 255, 0.7);
 			}
+
+			#langFlip {
+				color: blue;
+				cursor: pointer;
+			}
 		</style>
 	</head>
 	<body>
 		<div class=wrapper>
 			<div class=panel>
-				<h1>Beginner kanji checker</h1>
-				<h2>For the English – Japanese language exchange Discord server</h2>
-				<p>This is a little tool to check a message for kanji considered beginner-unfriendly in the #beginner_jpn_chat channel of the English – Japanese language exchange server on Discord. Simply type/paste your message below and press <i>Check</i>, the tool will highlight kanji not in the beginner-friendly list.</p>
+				<p id=langFlip onclick="flipLanguage()">日本語</p>
+				<h1 id=messageTitle>Beginner kanji checker</h1>
+				<h2 id=messageSubtitle>For the English – Japanese language exchange Discord server</h2>
+				<p id=messageDescription>This is a little tool to check a message for kanji considered beginner-unfriendly in the #beginner_jpn_chat channel of the English – Japanese language exchange server on Discord. Simply type/paste your message below and press <i>Check</i>, the tool will highlight kanji not in the beginner-friendly list.</p>
 			</div>
 			<div class=panel>
-				<p><label for=messageInput>Message</label></p>
+				<p><label for=messageInput id=messageMessage>Message:</label></p>
 				<textarea id=messageInput class=japanese rows=5></textarea>
-				<p><button onclick=checkMessage()>Check</button></p>
+				<p><button onclick=checkMessage() id=messageCheck>Check</button></p>
 			</div>
 			<div class=panel>
-				<p>Result:</p>
-				<p class=japanese id=result><i style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 12px;">(No results yet.)</i></p>
+				<p id=messageResult>Result:</p>
+				<p class=japanese id=result><span style="font-family: 'Segoe UI', Helvetica, Arial, sans-serif; font-size: 12px;"><i>(No results yet. | </i>今、結果がありません。<i>)</i></span></p>
 				<span id=count></span>
 			</div>
 		</div>
@@ -133,10 +139,44 @@
 				let result = "";
 				resultContainer.innerHTML = "";
 				for (let char of message)
-					if (isBeginnerUnfriendly(char)) result += `<span class=highlight>${char}</span>`;
+					if (isBeginnerUnfriendly(char)) {
+						result += `<span class=highlight>${char}</span>`;
+						count++;
+					}
 					else result += escapeCharacter(char);
 				resultContainer.innerHTML = result;
-				countContainer.innerText = `There ${count == 0 ? "are no" : count == 1 ? "is 1" : "are " + count} beginner-unfriendly kanji.`;
+				countContainer.innerText = languageJapanese
+					? count == 0 ? "初心者にとって難しい漢字がありません。" : `初心者にとって難しい${count}字の漢字があります。`
+					: `There ${count == 0 ? "are no" : count == 1 ? "is 1" : "are " + count} beginner-unfriendly kanji.`;
+			}
+
+			var languageJapanese = false;
+
+			const messageMapping = {
+				"false": [
+					["langFlip", "日本語"],
+					["messageTitle", "Beginner kanji checker"],
+					["messageSubtitle", "For the English – Japanese language exchange Discord server"],
+					["messageDescription", "This is a little tool to check a message for kanji considered beginner-unfriendly in the #beginner_jpn_chat channel of the English – Japanese language exchange server on Discord. Simply type/paste your message below and press <i>Check</i>, the tool will highlight kanji not in the beginner-friendly list."],
+					["messageMessage", "Message:"],
+					["messageCheck", "Check"],
+					["messageResult", "Result:"]
+				],
+				"true": [
+					["langFlip", "English"],
+					["messageTitle", "初心者漢字チェッカー"],
+					["messageSubtitle", "英語・日本語言語交換Discordサーバー用"],
+					["messageDescription", "これは英語・日本語言語交換Discordサーバーの#​beginner_jpn_chatチャンネルのメッセージに初心者にとって難しい漢字がないか確認するための小さなツールです。下にメッセージをタイプまたはペーストして、「チェック」を押すと、ツールは難しい漢字をハイライトしてくれます。"],
+					["messageMessage", "メッセージ:"],
+					["messageCheck", "チェック"],
+					["messageResult", "結果:"]
+				]
+			};
+
+			function flipLanguage() {
+				languageJapanese = !languageJapanese;
+				for (let entry of messageMapping[languageJapanese])
+					document.getElementById(entry[0]).innerHTML = entry[1];
 			}
 		</script>
 	</body>
