@@ -54,6 +54,15 @@ let engine = new CalculatorEngine;
 
 let screen = document.getElementById("mainScreen");
 
+function escapeText(text) {
+	return text
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;")
+		.replace(/'/g, "&#039;");
+}
+
 function addOutput(html) {
 	let element = document.createElement("div");
 	element.className = "row scale-transition scale-out nomargin";
@@ -72,14 +81,14 @@ let calculate = () => {
 	if (expression == '')
 		if (config.calculateLastIfEmpty && lastExpression != null) expression = lastExpression; else return;
 	try {
-		addOutput(`${expression}<br><span class=result>= ${Utils.formatNumber(engine.calculate(expression), engine)}</span>`);
+		addOutput(`${escapeText(expression)}<br><span class=result>= ${Utils.formatNumber(engine.calculate(expression), engine)}</span>`);
 		inputBox.value = "";
 		lastExpression = expression;
 	} catch (e) {
 		if (e instanceof ExpressionInvalidException) {
 			let errorString = stringMap["error." + e.message];
 			if (e.messageArguments != null) for (let arg of e.messageArguments) errorString = errorString.replace("%s", arg);
-			addOutput(`${expression}<br><span class="red-text">ERROR at position ${e.position}:<br>${errorString}</span>`);
+			addOutput(`${escapeText(expression)}<br><span class="red-text">ERROR at position ${e.position}:<br>${errorString}</span>`);
 			inputBox.setSelectionRange(e.position, e.position);
 		} else throw e;
 	}
