@@ -539,6 +539,7 @@ export class Date extends Function {
 		while (args.length < 3) args.push(1);
 		while (args.length < 6) args.push(0);
 		for (let i = 0; i < 2; i++) args[i] = Math.round(args[i]);
+		args[0] -= 2000; // Offset to increase accuracy for near present time.
 		if ((args[1] = Math.floor(args[1])) < 1 || args[1] > 12) throw new ExpressionInvalidException("invalidDateMonthOutOfRange");
 		args[2] = args[2] - 1 + args[3] / 24 + args[4] / 1440 + args[5] / 86400;
 		if (args[2] < 0 || args[2] >= Utils.getMonthDays(args[0], args[1])) throw new ExpressionInvalidException("invalidDateDayOutOfRange");

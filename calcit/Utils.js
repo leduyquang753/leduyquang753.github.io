@@ -144,7 +144,8 @@ export function getYearAndDayOfYearFromIndex(index) {
 	return [year + (cycles = Math.floor(index / 36524)) * 100 // In each repeat cycle, it repeats every 100 years, or 36 524 days; the only irregular year is the 400th year which is a leap year.
 		+ (cycles = Math.floor((index -= cycles * 36524) / 1461)) * 4 // In that sub-cycle, it also repeats every 4 years or 1461 days, except the 100th which is not a leap year.
 		+ (cycles = Math.floor((index -= cycles * 1461) / 365)) // In that sub-sub-cycle, it also repeats every year, or 365 days, except the 4th which is a leap year.
-		+ (cycles == 4 ? 0 : 1), // Handle the last day of the 4-year cycle.
+		+ (cycles == 4 ? 0 : 1) // Handle the last day of the 4-year cycle.
+		+ 2000, // Offset to increase accuracy for near present time.
 		cycles == 4 ? 365 : index - cycles * 365
 	];
 }
