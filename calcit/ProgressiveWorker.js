@@ -1,4 +1,4 @@
-// Version: 16
+// Version: 17
 self.addEventListener('install', function (event) {
 	console.log("CalcIt: Updating files...");
 	event.waitUntil(caches.delete("CalcIt"));

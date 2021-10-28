@@ -201,7 +201,7 @@ export class Log extends Function {
 
 export class Ln extends Function {
 	constructor() {
-		super([ "logn", "loge", "natural_algorithm", "natural_logarid" ]);
+		super([ "ln", "logn", "loge", "natural_algorithm", "natural_logarid" ]);
 	}
 	calculate(args, engine) {
 		let tot = this.total(args);
