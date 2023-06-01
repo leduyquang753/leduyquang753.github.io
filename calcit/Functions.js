@@ -222,7 +222,7 @@ export class Permutation extends Function {
 		if (k > n) return 0;
 		k = n - k;
 		let res = 1;
-		while (k < n) res *= k++;
+		while (k <= n) res *= k++;
 		return res;
 	}
 }
