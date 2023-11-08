@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -12,7 +13,7 @@
 			margin: 0px;
 			display: flex;
 			flex-direction: column;
-			height: 100%;
+			height: 100vh;
 		}
 		a {
 			text-decoration: none;
@@ -210,7 +211,7 @@
 		}
 		
 		async function loadPage(url) {
-			return await fetch('https://cors-anywhere.herokuapp.com/'+url).then(response => response.text());
+			return await (await fetch(url)).text();
 		}
 		
 		async function changeSite() {
@@ -235,14 +236,14 @@
 			document.getElementById('siteAddress').innerHTML = site;
 			document.head.insertAdjacentHTML('beforeEnd', '<base href="https://'+site+'" target="_blank">');
 			try {
-				lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json'))['query']['recentchanges'][0]['timestamp']);
+				lastActive = Date.parse(JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rclimit=1&rcprop=timestamp&format=json&origin=*'))['query']['recentchanges'][0]['timestamp']);
 				updateInactiveTime();
 				panel.insertAdjacentHTML('beforeEnd',"<div class=message><div class=messageBar><div class=messageBarLeft>"+formatDateTime(Date.now())+"</div><div class=buttonIcon><a target='_blank' href='/Special:RecentChanges' title='View recent changes on the site itself.'></a></div></div><div>Started watching.</div></div>");
 				scroll();
 				
 				while (true) {
 					await sleep();
-					changes = JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rcdir=newer&rcstart='+new Date(lastActive+1000).toISOString()+'&rcprop=ids|flags|user|parsedcomment|timestamp|title|sizes|tags|loginfo&rclimit=500&format=json'));
+					changes = JSON.parse(await loadPage('https://'+site+'/api.php?action=query&list=recentchanges&rcdir=newer&rcstart='+new Date(lastActive+1000).toISOString()+'&rcprop=ids|flags|user|parsedcomment|timestamp|title|sizes|tags|loginfo&rclimit=500&format=json&origin=*'));
 					let inactive = true;
 					for (change of changes['query']['recentchanges']) {
 						let res = await processChange(change);
@@ -490,7 +491,7 @@
 							if (entry.logaction.startsWith('comment')) {
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <a class=icon target="_blank" href="/Special:CommentPermalink/'+entry.logparams['4:comment_id']+'">'+commentActionIconMap[entry.logaction]+'</a> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a>';
 								if (entry.logaction != 'comment-deleted')
-									res.desc = JSON.parse(await loadPage('https://'+site+'/api.php?action=parse&format=json&wrapoutputclass=&text='+encodeURI(JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&comment_id='+entry.logparams['4:comment_id'])).text))).parse.text['*'];
+									res.desc = JSON.parse(await loadPage('https://'+site+'/api.php?action=parse&format=json&wrapoutputclass=&text='+encodeURI(JSON.parse(await loadPage('https://'+site+'/api.php?action=comment&do=getRaw&format=json&origin=*&comment_id='+entry.logparams['4:comment_id'])).text))).parse.text['*'];
 							} else { // profile-edited
 								res.header = '<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon title="Edit profile field"></span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title.substring(12)+'</a> ('+profileFieldMap[entry.logparams['4:section']]+')';
 								res.desc = comment;
@@ -505,7 +506,7 @@
 		}
 			
 		async function processLogEvent(res, timestamp) {
-			let logEvent = JSON.parse(await loadPage("https://"+site+"/api.php?action=query&list=logevents&lestart="+timestamp+"&leend="+timestamp+"&format=json&lelimit=5")).query.logevents[0];
+			let logEvent = JSON.parse(await loadPage("https://"+site+"/api.php?action=query&list=logevents&lestart="+timestamp+"&leend="+timestamp+"&format=json&origin=*&lelimit=5")).query.logevents[0];
 			let comment = logEvent.comment == '' ? '<i>(No description provided.)</i>' : logEvent.comment;
 			return false;
 		}
