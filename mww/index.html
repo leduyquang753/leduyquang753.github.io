@@ -403,6 +403,9 @@
 						if (entry.tags.includes('mobile web edit')) {
 							entry.tags.del('mobile web edit');
 						}
+						if (entry.tags.includes('wikieditor')) {
+							entry.tags.del('wikieditor');
+						}
 						res.header = (userIcons == '' ? '' : '<span class=icon>'+userIcons+'</span> ')+'<a target="_blank" href="/User:'+entry.user+'">'+entry.user+'</a> <span class=icon>'+icon+'</span> <a target="_blank" href="/'+formatPageName(entry.title)+'">'+entry.title+'</a> (<a title="Diff" target="_blank" class="'+getChangeFormatting(sizechange)+'" href="/index.php?diff='+change.revid+'"/>'+(sizechange > 0 ? '+' : sizechange == 0 ? '' : '–')+(''+sizechange).replace('-','')+'</a>'+('minor' in entry ? ', minor' : '')+')';
 						res.desc = comment;
 					} else {
