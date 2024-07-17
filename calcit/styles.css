@@ -107,8 +107,19 @@ textarea {
 	overflow-wrap: break-word;
 }
 
-.result {
+.result-row {
+	display: flex;
+	flex-direction: row;
 	font-size: 1.6rem;
+}
+
+.result-row > :first-child {
+	flex: 1;
+}
+
+.result-row > :last-child {
+	width: 2rem;
+	text-align: center;
 }
 
 .fullWidth {

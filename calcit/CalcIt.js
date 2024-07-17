@@ -72,16 +72,22 @@ function addOutput(html) {
 		element.classList.add("scale-in");
 	}, 1);
 	element.scrollIntoView();
+	return element;
 }
 
 let inputBox = document.getElementById("input");
+
+function onHistoryRecall() {
+	inputBox.value = this.parentNode.parentNode.firstChild.innerText;
+	inputBox.focus();
+}
 
 let calculate = () => {
 	let expression = inputBox.value.trim();
 	if (expression == '')
 		if (config.calculateLastIfEmpty && lastExpression != null) expression = lastExpression; else return;
 	try {
-		addOutput(`${escapeText(expression)}<br><span class=result>= ${Utils.formatNumber(engine.calculate(expression), engine)}</span>`);
+		addOutput(`<div>${escapeText(expression)}</div><div class="result-row"><div>= ${Utils.formatNumber(engine.calculate(expression), engine)}</div><div class="waves-effect waves-dark"><i class="material-icons">arrow_drop_down</i></div></div>`).querySelector(".result-row > :last-child").onclick = onHistoryRecall;
 		inputBox.value = "";
 		lastExpression = expression;
 	} catch (e) {
@@ -188,7 +194,7 @@ M.Tabs.init(document.getElementById("navigation"), {
 				keyboardButton.style.display = "block";
 			}
 			clearButton.style.display = "block";
-		} else {	
+		} else {
 			keyboardButton.style.display = clearButton.style.display = "none";
 			if (keyboardVisible) {
 				keyboardFiller.className = "keyboardFillerHidden";
