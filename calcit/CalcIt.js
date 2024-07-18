@@ -78,8 +78,8 @@ function addOutput(html) {
 let inputBox = document.getElementById("input");
 
 function onHistoryRecall() {
-	inputBox.value = this.parentNode.parentNode.firstChild.innerText;
-	inputBox.focus();
+	setInput(this.parentNode.parentNode.firstChild.innerText);
+	if (!keyboardVisible) inputBox.focus();
 }
 
 let calculate = () => {
