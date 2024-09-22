@@ -1,18 +1,25 @@
 {
+	"id": "https://leduyquang753.github.io/calcit",
 	"short_name": "CalcIt",
 	"name": "CalcIt",
 	"description": "Expression calculator for simple to medium calculations.",
+	"categories": ["utilities", "calculator"],
 	"lang": "en-US",
+	"dir": "ltr",
 	"icons": [
 		{
 			"src": "Icon.svg",
 			"type": "image/svg+xml",
-			"sizes": "256x256"
+			"sizes": "1024x1024"
 		}
 	],
 	"start_url": "index.html",
 	"background_color": "#F3E5F5",
 	"theme_color": "#F3E5F5",
 	"display": "standalone",
-	"scope": "."
+	"orientation": "portrait",
+	"scope": ".",
+	"launch_handler": {
+		"client_mode": "focus-existing"
+	}
 }
