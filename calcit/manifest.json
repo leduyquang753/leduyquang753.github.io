@@ -11,6 +11,16 @@
 			"src": "Icon.svg",
 			"type": "image/svg+xml",
 			"sizes": "1024x1024"
+		},
+		{
+			"src": "Icon-512px.png",
+			"type": "image/png",
+			"sizes": "512x512"
+		},
+		{
+			"src": "Icon-192px.png",
+			"type": "image/png",
+			"sizes": "192x192"
 		}
 	],
 	"start_url": "index.html",
@@ -21,5 +31,6 @@
 	"scope": ".",
 	"launch_handler": {
 		"client_mode": "focus-existing"
-	}
+	},
+	"prefer_related_applications": false
 }
